@@ -6,13 +6,7 @@ WowPage 是一个基于 Jekyll 的学术主页模板，可直接部署到 GitHub
 
 论文支持精选卡片与完整列表切换。Blog 保留三个无内容、无链接的占位框；音乐播放器按需启用。模板不附带 CV，可添加自己制作的 CV 链接。
 
-[在线预览](https://wd7ang.github.io/WowPage/) · [自定义指南](docs/customization.md) · [更新日志](CHANGELOG.md)
-
-## 展示案例
-
-| 例图 | 链接 |
-| --- | --- |
-| <img src="docs/showcase/weidong-tang.png" alt="汤维栋的个人主页预览" width="520"> | **汤维栋 · Weidong Tang**<br>[https://wd7ang.github.io/](https://wd7ang.github.io/) |
+[在线预览](https://wd7ang.github.io/WowPage/) · [展示案例](#展示案例) · [自定义指南](docs/customization.md) · [更新日志](CHANGELOG.md)
 
 ## 版本
 
@@ -121,3 +115,10 @@ node scripts/check-site.mjs --baseurl /WowPage
 项目使用 MIT 许可证，见 [LICENSE](LICENSE)。基于 [AcademicPages](https://github.com/academicpages/academicpages.github.io) 和 [Minimal Mistakes](https://github.com/mmistakes/minimal-mistakes)。WowPage 起源于 [Yue Su / Selen-Suyue 的模板](https://selen-suyue.github.io/)，由 Weidong Tang 与 Yue Su 开发。这里的署名属于模板作者；站点个人资料由使用者自行填写。
 
 欢迎标题使用 Font Diner 的 [Permanent Marker](https://fonts.google.com/specimen/Permanent+Marker) 字体，已随模板保存在本地，遵循 [Apache 2.0 许可证](assets/fonts/permanent-marker/LICENSE.txt)。第三方字体与脚本的授权声明保留在相应文件中。
+
+## 展示案例
+
+| 例图 | 链接 |
+| --- | --- |
+| <img src="docs/showcase/weidong-tang.png" alt="汤维栋的个人主页预览" width="520"> | **汤维栋 · Weidong Tang**<br>[https://wd7ang.github.io/](https://wd7ang.github.io/) |
+| <img src="docs/showcase/zhiming-liu.png" alt="Zhiming Liu 的个人主页预览" width="520"> | **Zhiming Liu**<br>[https://mikuz12.github.io/](https://mikuz12.github.io/) |

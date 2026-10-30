@@ -6,13 +6,7 @@ WowPage is a Jekyll academic homepage template for GitHub Pages. It includes an 
 
 Publications support featured cards and a full list. Blog contains three empty boxes with no content or links, and the music player is optional. No CV is bundled; add a link to your own CV when ready.
 
-[Live demo](https://wd7ang.github.io/WowPage/) · [Customization guide (中文)](docs/customization.md) · [Changelog](CHANGELOG.md)
-
-## Showcase
-
-| Preview | Link |
-| --- | --- |
-| <img src="docs/showcase/weidong-tang.png" alt="Preview of Weidong Tang's homepage" width="520"> | **Weidong Tang**<br>[https://wd7ang.github.io/](https://wd7ang.github.io/) |
+[Live demo](https://wd7ang.github.io/WowPage/) · [Showcase](#showcase) · [Customization guide (中文)](docs/customization.md) · [Changelog](CHANGELOG.md)
 
 ## Versions
 
@@ -119,3 +113,10 @@ Only run `npm install` and `npm run build:js` when you edit the base theme's Jav
 Released under the [MIT License](LICENSE). Built on [AcademicPages](https://github.com/academicpages/academicpages.github.io) and [Minimal Mistakes](https://github.com/mmistakes/minimal-mistakes). WowPage originated from [Yue Su / Selen-Suyue's template](https://selen-suyue.github.io/) and was developed by Weidong Tang and Yue Su. These credits identify the template's authors; users supply their own profile details.
 
 The welcome heading uses [Permanent Marker](https://fonts.google.com/specimen/Permanent+Marker) by Font Diner, bundled locally under its [Apache 2.0 license](assets/fonts/permanent-marker/LICENSE.txt). Third-party font and script notices remain with their source files.
+
+## Showcase
+
+| Preview | Link |
+| --- | --- |
+| <img src="docs/showcase/weidong-tang.png" alt="Preview of Weidong Tang's homepage" width="520"> | **Weidong Tang**<br>[https://wd7ang.github.io/](https://wd7ang.github.io/) |
+| <img src="docs/showcase/zhiming-liu.png" alt="Preview of Zhiming Liu's homepage" width="520"> | **Zhiming Liu**<br>[https://mikuz12.github.io/](https://mikuz12.github.io/) |
