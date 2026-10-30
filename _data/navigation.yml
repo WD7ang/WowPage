@@ -16,6 +16,9 @@ main:
   - title: "Project"
     url: "/#projects"
 
+  - title: "Blog"
+    url: "/#blog"
+
   - title: "Awards"
     url: "/#awards"
 

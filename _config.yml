@@ -3,7 +3,7 @@ locale: en-US
 title: Academic Homepage
 title_separator: "·"
 name: &name "Your Name"
-description: "Research, publications, and projects from Your Name."
+description: "Research, publications, projects, and notes from Your Name."
 # Leave these unset for GitHub Pages auto-discovery, or set explicit values.
 url: # https://your-username.github.io (no trailing slash)
 baseurl: # "" for username.github.io; /repository-name for a project site
@@ -23,7 +23,7 @@ author:
   linkedin: # username
   WeChat: # image filename relative to images/
 
-# Rendering and defaults. Homepage content lives in _data/.
+# Rendering and defaults. Content lives in _data/ and _posts/.
 timezone: Etc/UTC
 future: false
 markdown: kramdown
@@ -33,6 +33,8 @@ kramdown:
   auto_ids: true
   toc_levels: 1..6
   syntax_highlighter: rouge
+excerpt_separator: "<!--more-->"
+permalink: /blog/:year/:month/:day/:title/
 words_per_minute: 160
 breadcrumbs: false
 read_more: disabled
@@ -41,7 +43,7 @@ comments:
 analytics:
   provider: false
 atom_feed:
-  hide: true
+  hide: false
 include:
   - _pages
 exclude:
@@ -69,14 +71,24 @@ defaults:
     values:
       layout: single
       author_profile: true
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: academic-post
+      author_profile: false
+      comments: false
+      share: false
 sass:
   sass_dir: _sass
   style: compressed
 plugins:
   - jekyll-sitemap
+  - jekyll-feed
   - jekyll-redirect-from
 whitelist:
   - jekyll-sitemap
+  - jekyll-feed
   - jekyll-redirect-from
 compress_html:
   clippings: all

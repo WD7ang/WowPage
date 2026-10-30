@@ -13,6 +13,7 @@ redirect_from:
 {% include home/experience.html %}
 {% include home/publications.html %}
 {% include home/projects.html %}
+{% include blog-bookshelf.html %}
 {% include home/awards.html %}
 {% include home/talks.html %}
 {% include home/services.html %}

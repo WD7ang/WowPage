@@ -1,0 +1,128 @@
+/* Two books, with readable pages underneath the covers. */
+.home-blog { margin-top: 38px; font: 15px/1.75 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+.home-blog [hidden] { display: none !important; }
+.home-blog #blog-heading { margin-top: 0; }
+.library-heading { text-align: center; margin-bottom: 26px; }
+.library-heading .eyebrow { margin-bottom: 8px; font-size: 10px; }
+.home-blog .library-subtitle { color: #596d80; font-family: "Songti SC", "SimSun", serif; font-size: 19px; letter-spacing: .12em; margin-bottom: 12px; }
+.library-subtitle > span { display: block; margin-top: 5px; font: 13px/1.7 Georgia, serif; letter-spacing: .02em; }
+.home-blog .library-hint { color: #788690; font-size: 12px; margin: 0; }
+.touch-hint { display: none; }
+.bookshelf { display: grid; grid-template-columns: repeat(2, minmax(0, 320px)); justify-content: center; gap: 80px; padding: 0 50px 32px; }
+.book { position: relative; height: 400px; min-width: 0; perspective: 3000px; perspective-origin: left center; scroll-margin-top: 100px; }
+.book::before { content: ""; position: absolute; inset: 6px -7px -6px 7px; border: 1px solid #d8d9d6; border-radius: 3px 9px 9px 3px; background: repeating-linear-gradient(90deg, #e7e7df 0 1px, #faf9f2 1px 3px); box-shadow: 7px 18px 30px #2a405b17, 0 2px 4px #243b5115; }
+.book-pages { height: 100%; padding: 18px 20px 16px; position: relative; background: #fffef9; border: 1px solid #e0e1db; border-radius: 3px 7px 7px 3px; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #c8d2d7 transparent; box-shadow: inset 9px 0 16px -15px #3b4a5a; }
+.book-page-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; padding-bottom: 10px; border-bottom: 1px solid #e3e6e4; margin-bottom: 10px; }
+.book-small-label { font-size: 10px; letter-spacing: .08em; color: #7c8b97; }
+.home-blog .book-page-heading h3 { color: #315d80; font: 22px/1.4 Georgia, "Songti SC", "SimSun", serif; margin: 4px 0 0; }
+.book-page-heading h3 > span { font-size: 17px; margin-left: 4px; }
+.book-small-label > span { display: block; margin-top: 2px; letter-spacing: .02em; }
+.book-close { padding: 3px 1px; border: 0; background: none; color: #718294; font-size: 11px; white-space: nowrap; }
+.book-close:hover { color: #315d80; }
+.book-close span { font-size: inherit; }
+.book-entries { list-style: none; padding: 0; margin: 0; }
+.book-entries li + li { border-top: 1px solid #e3e6e4; margin-top: 22px; padding-top: 22px; }
+.book-entry { display: block; color: inherit; }
+.book-entry:hover { text-decoration: none; }
+.book-entry img { width: 100%; height: 95px; object-fit: cover; object-position: 50% 17%; border-radius: 2px; margin-bottom: 10px; background: #f4f0e5; }
+.book-entry-date { font-size: 10px; color: #7c8b97; font-variant-numeric: tabular-nums; letter-spacing: .04em; }
+.home-blog .book-entry-title { font-family: "Songti SC", "SimSun", Georgia, serif; font-size: 20px; font-weight: 600; margin: 4px 0 9px; line-height: 1.4; color: #2b4358; }
+.book-entry-title > span { display: block; font: 14px/1.45 Georgia, serif; margin-top: 3px; }
+.book-entry:hover .book-entry-title { color: #477896; }
+.book-entry-art { display: block; padding: 6px; background: #f1eee2; border-radius: 2px; margin-bottom: 9px; }
+.book-entry-art svg { display: block; width: 100%; height: 56px; stroke: #83988c; stroke-width: 1; }
+.book-entry-excerpt-en { display: block; margin-top: 6px; }
+.book-entry p { color: #76828b; font-size: 12px; line-height: 1.7; margin-bottom: 8px; }
+.book-entry-read { color: #315d80; font-size: 11px; letter-spacing: .04em; }
+.book-entry-read span { margin-left: 6px; }
+.home-blog .book-page-number { margin: 14px 0 0; padding-top: 10px; border-top: 1px solid #e3e6e4; display: flex; justify-content: space-between; color: #8a949d; font-size: 10px; }
+.book-empty { min-height: 245px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+.book-empty svg { width: 86px; height: 70px; color: #9baab6; margin-bottom: 20px; }
+.home-blog .book-empty h4 { font-family: "Songti SC", "SimSun", serif; font-size: 19px; font-weight: 400; line-height: 1.6; color: #4e667a; margin: 0 0 12px; }
+.book-empty h4 > span { display: block; font: 15px/1.6 Georgia, serif; margin-top: 5px; }
+.book-empty p > span { display: block; margin-top: 8px; }
+.book-empty p { color: #8a949d; font-size: 12px; line-height: 2; }
+.book-cover { display: none; border: 0; padding: 0; text-align: left; position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; color: #f4f3e9; background: none; font: inherit; cursor: pointer; transform-origin: left center; transform-style: preserve-3d; transition: transform .8s cubic-bezier(.22,.75,.23,1); border-radius: 3px 7px 7px 3px; }
+.book-cover-front, .book-cover-back { position: absolute; inset: 0; border-radius: inherit; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.book-cover-front { display: flex; flex-direction: column; padding: 18px 20px 18px 30px; background: linear-gradient(90deg, #112e4b 0, #284c6b 8px, #214360 14px, transparent 28px), repeating-linear-gradient(0deg, #ffffff03 0 1px, transparent 1px 3px), #315b7b; border: 1px solid #294e6d; box-shadow: inset -1px 0 #ffffff15, 5px 2px 10px #263a4b12; }
+.book-cover-front::after { content: ""; position: absolute; inset: 15px 14px 15px 26px; border: 1px solid #cbd9e22b; border-radius: 1px; pointer-events: none; }
+.book-cover-back { transform: rotateY(180deg); background: linear-gradient(90deg, #d6dedf, #e7ebe6 14%, #f3f2e8); border: 1px solid #cbd3d2; }
+.book-cover-top { display: flex; justify-content: space-between; gap: 8px; font-size: 9px; letter-spacing: .12em; color: #b7cad7; }
+.book-cover-title { display: block; margin-top: 16px; font: 38px/1.2 Georgia, "Songti SC", "SimSun", serif; letter-spacing: -.02em; }
+.book-cover-title .book-cover-title-alt { display: inline-block; margin-left: 12px; font: 19px/1.4 Georgia, "Songti SC", "SimSun", serif; letter-spacing: .02em; }
+.book-cover-subtitle { margin-top: 10px; font-size: 12px; letter-spacing: .12em; color: #c4d4df; }
+.book-cover-subtitle > span { display: block; margin-top: 4px; font-size: 11px; letter-spacing: .02em; }
+.book-cover-art { display: block; width: 100%; margin: 8px 0; }
+.book-cover-art svg { display: block; width: 100%; height: 42px; stroke: #c6d7e5; stroke-width: .9; opacity: .66; }
+.book-cover-art .art-dot { fill: #e2c99a; stroke: none; }
+.book-cover-description { display: block; font-size: 11px; line-height: 1.75; color: #cbd8e1; }
+.book-cover-description > span { display: block; margin-top: 7px; font-size: 11px; line-height: 1.6; }
+.book-cover-bottom { margin-top: auto; padding-top: 12px; display: flex; justify-content: space-between; gap: 8px; font-size: 10px; letter-spacing: .05em; color: #c4d3de; }
+.book--essays .book-cover-front { background: linear-gradient(90deg, #c3bca9 0, #e0d8c6 8px, #d4ccb8 14px, transparent 28px), repeating-linear-gradient(0deg, #8a7b5d04 0 1px, transparent 1px 3px), #eee9db; border-color: #d1cbbc; color: #334c5d; }
+.book--essays .book-cover-front::after { border-color: #a9a38e4a; }
+.book--essays .book-cover-title { font-family: "Songti SC", "SimSun", serif; font-size: 38px; letter-spacing: .14em; }
+.book--essays .book-cover-subtitle, .book--essays .book-cover-top, .book--essays .book-cover-bottom { color: #7f8177; }
+.book--essays .book-cover-description { color: #767e79; }
+.book--essays .book-cover-art svg { stroke: #718777; }
+.books-ready .book-cover { display: block; }
+.books-ready .book-pages { opacity: 0; transition: opacity .3s ease; }
+.books-ready .book.is-open .book-cover { transform: rotateY(-100deg); pointer-events: none; }
+.books-ready .book.is-open .book-pages { opacity: 1; }
+.bookshelf:not(.books-ready) .book, .bookshelf:not(.books-ready) .book-pages { height: auto; }
+.book-cover:focus-visible { outline: 3px solid #7ca4c5; outline-offset: 7px; }
+.home-blog .library-signoff { text-align: center; color: #788690; font: 13px/1.7 "Songti SC", "SimSun", serif; margin: 0 0 28px; }
+.library-signoff > span { display: block; font: italic 13px/1.7 Georgia, serif; margin-top: 4px; }
+
+/* Bilingual reading, with both languages available without JavaScript. */
+.essay-page { background: #f9f8f3; }
+.essay-page .site-main { padding-top: 42px; }
+.essay-reader { max-width: 720px; margin: auto; }
+.essay-heading { margin-bottom: 44px; padding-bottom: 27px; border-bottom: 1px solid #dfdfd5; }
+.essay-back { display: inline-block; font-size: 12px; color: #7a8791; margin-bottom: 36px; }
+.essay-heading .eyebrow { font-size: 10px; color: #7d8d96; }
+.essay-heading h1 { font-family: "Songti SC", "SimSun", serif; font-size: clamp(30px, 4vw, 43px); line-height: 1.5; letter-spacing: .035em; margin: 10px 0 20px; }
+.essay-title-en { display: block; font: 25px/1.5 Georgia, serif; letter-spacing: 0; margin-top: 9px; color: #657985; }
+.essay-language-nav { display: flex; gap: 18px; margin-top: 23px; font-size: 13px; }
+.essay-language { scroll-margin-top: 95px; }
+.essay-language + .essay-language { border-top: 1px solid #dfdfd5; margin-top: 45px; padding-top: 30px; }
+.essay-language h2 { color: #7d8d96; font: 15px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin-bottom: 25px; }
+.essay-language[lang="en"] { font-family: Georgia, "Times New Roman", serif; font-size: 18px; line-height: 1.95; }
+.essay-language[lang="en"] p { text-indent: 0; }
+.essay-meta { color: #88908f; font-size: 12px; margin: 0; }
+.essay-meta span { margin: 0 12px; color: #b4b9b3; }
+.essay-content { font-family: "Songti SC", "SimSun", "Noto Serif CJK SC", serif; color: #39454a; font-size: 19px; line-height: 2.15; overflow-wrap: break-word; }
+.essay-content p { text-indent: 2em; margin-bottom: 1.55em; }
+.essay-content ol { padding-left: 2em; margin: 1.6em 0; }
+.essay-content li { padding-left: .4em; margin-bottom: 1em; }
+.essay-content li::marker { color: #638397; }
+.essay-content li p { text-indent: 0; }
+.essay-end { display: flex; flex-direction: column; align-items: center; gap: 27px; padding-top: 40px; }
+.essay-end > span { color: #b9b7a7; }
+.essay-end a { font-size: 12px; color: #7c8b93; }
+@media (max-width: 1280px) {
+  .bookshelf { padding-left: 40px; padding-right: 12px; gap: 64px; }
+}
+@media (max-width: 1100px) {
+  .bookshelf { grid-template-columns: minmax(0, 300px); gap: 32px; padding: 0 10px 30px; }
+  .books-ready .book.is-open .book-cover { transform: rotateY(-88deg); }
+}
+@media (max-width: 760px) {
+  .library-heading { margin-bottom: 22px; }
+  .home-blog .library-subtitle { font-size: 17px; }
+  .book { height: 420px; }
+  .essay-heading { margin-bottom: 30px; }
+  .essay-content { font-size: 17px; line-height: 2.1; }
+  .essay-back { margin-bottom: 25px; }
+}
+@media (hover: none), (pointer: coarse) { .hover-hint { display: none; } .touch-hint { display: inline; } }
+@media (prefers-reduced-motion: reduce) {
+  .book-cover, .books-ready .book-pages { transition: none; }
+}
+@media print {
+  .book-cover, .book-close, .library-hint, .essay-back, .essay-end { display: none !important; }
+  .bookshelf { display: block; padding: 0; }
+  .book { height: auto; margin-bottom: 25px; }
+  .book::before { display: none; }
+  .book-pages, .books-ready .book-pages { height: auto; opacity: 1; overflow: visible; transition: none; }
+  .essay-content { font-size: 11pt; }
+}

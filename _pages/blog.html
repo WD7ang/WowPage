@@ -1,0 +1,16 @@
+---
+layout: null
+permalink: /blog/
+---
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog / 博客 · {{ site.author.name | escape }}</title>
+  <link rel="canonical" href="{{ '/#blog' | absolute_url }}">
+  <meta http-equiv="refresh" content="0; url={{ '/#blog' | relative_url }}">
+  <script>window.location.replace({{ '/#blog' | relative_url | jsonify }});</script>
+</head>
+<body><p><a href="{{ '/#blog' | relative_url }}">博客已移至主页。<span lang="en">The blog is now on the homepage.</span> →</a></p></body>
+</html>

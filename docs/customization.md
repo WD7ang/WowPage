@@ -2,7 +2,7 @@
 
 ## 身份与路径
 
-`_config.yml` 顶层 `name` 使用 YAML anchor 与 `author.name` 共用，页面自动读取它。简介、描述和论文作者列表是独立内容，需要一并替换。可选社交字段留空（不填值）即可隐藏。头像路径相对 `images/`，例如 `avatar: profile/avatar.jpg`。
+`_config.yml` 顶层 `name` 使用 YAML anchor 与 `author.name` 共用，页面和书封自动读取它。简介、描述和论文作者列表是独立内容，需要一并替换。可选社交字段留空（不填值）即可隐藏。头像路径相对 `images/`，例如 `avatar: profile/avatar.jpg`。
 
 默认 `url`、`baseurl` 和 `repository` 不填值，由 GitHub Pages 自动推断。本地根路径预览也可直接运行。若部署到其他服务或需固定路径，填写以下配置；显式的 `baseurl: ""` 表示根路径：
 
@@ -12,7 +12,7 @@ baseurl: "" # 仓库名为 your-username.github.io；项目站点填 /your-repos
 repository: "your-username/your-repository"
 ```
 
-JSON 中本地图片和文件链接使用以 `/` 开头的站点路径，组件会加上 `baseurl`。外链填写完整 `https://...`。示例外链使用 `https://example.com`，应改为你的真实资源或移除对应链接项。
+JSON 中本地图片、文件、文章链接使用以 `/` 开头的站点路径，组件会加上 `baseurl`。外链填写完整 `https://...`。示例外链使用 `https://example.com`，应改为你的真实资源或移除对应链接项。
 
 ## 首页内容
 
@@ -45,6 +45,52 @@ JSON 中本地图片和文件链接使用以 `/` 开头的站点路径，组件�
 ```
 
 `title_url` 可省略，`links` 可为空数组。仅需完整列表时，将所有论文的 `featured` 设为 false；页面会默认打开完整列表。禁用 JavaScript 时两种展示均可阅读。
+
+## 博客书架
+
+保留两本书的封面与翻书交互，不附带个人寄语或书封介绍文字。
+
+`_posts/` 初始为空，技术与随笔书架会显示空状态。需要发表时，创建 `_posts/YYYY-MM-DD-title.md`。`categories: [tech]` 进入技术书架，`categories: [essays]` 进入随笔书架。例如：
+
+```markdown
+---
+title: "A research note"
+date: 2026-01-01
+categories: [tech]
+layout: academic-post
+---
+
+在这里写下自己的文章正文。
+```
+
+双语随笔使用 `layout: essay`，文章前置信息与正文结构如下。需公式渲染时设置 `math: true`。
+
+```markdown
+---
+title: "你的随笔标题"
+title_en: "Your Essay Title"
+date: 2026-01-01
+categories: [essays]
+layout: essay
+lang: zh-CN
+extra_css: /assets/css/books.css
+body_class: essay-page
+---
+
+<section class="essay-language" id="essay-zh" lang="zh-CN" markdown="1">
+
+中文正文。
+
+</section>
+
+<section class="essay-language" id="essay-en" lang="en" markdown="1">
+
+Your English text.
+
+</section>
+```
+
+这些代码仅作为文档说明，不会生成文章；书架始终只展示你放入 `_posts/` 的内容。
 
 ## 添加自己的 CV 链接
 
@@ -82,8 +128,9 @@ JSON 中本地图片和文件链接使用以 `/` 开头的站点路径，组件�
 - `classic-home.css`：蓝灰主题、背景、布局与移动端调整。
 - `_includes/home/dated-list.html`：Awards、Talks、Services 共用的日期列表；统一样式在 `classic-home.css`。
 - `assets/fonts/permanent-marker/`：欢迎标题的本地手写字体及授权，无需请求外部字体服务。
+- `books.css` / `books.js`：博客书架。
 - `music-player.css` / `music-player.js`：可选播放器。
-- `_includes/date.html`：首页日期格式。
+- `academic.css`：文章页面；`_includes/date.html`：首页日期格式。
 - `_sass/vendor/`、`assets/js/plugins/`：主题依赖，保留上游授权信息。
 
 `images/background.jpg` 是云与草地背景。可替换此文件，或修改 `classic-home.css` 中 `body::before` 的背景与 `--home-background-opacity`。样式链接带构建时间版本参数，发布后浏览器会获取更新的样式。

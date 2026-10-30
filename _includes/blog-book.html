@@ -1,0 +1,50 @@
+<section class="book book--{{ include.kind }}" id="{{ include.kind }}" aria-label="{{ include.title }} / {{ include.title_alt }}" data-book>
+  <div class="book-pages" id="{{ include.kind }}-pages" data-book-pages>
+    <header class="book-page-heading">
+      <div>
+        <h3>{{ include.title }} <span>{{ include.title_alt }}</span></h3>
+      </div>
+      <button class="book-close" type="button" aria-label="合上 / Close {{ include.title }} {{ include.title_alt }}" data-book-close hidden>合上 <span lang="en">/ Close</span></button>
+    </header>
+    {% if include.posts.size > 0 %}
+    <ul class="book-entries">
+      {% for post in include.posts %}
+      <li>
+        <a class="book-entry" href="{{ post.url | relative_url }}">
+          {% if post.cover %}
+          <img src="{{ post.cover | relative_url }}" alt="" loading="lazy">
+          {% else %}
+          <span class="book-entry-art" aria-hidden="true"><svg viewBox="0 0 300 100" fill="none"><circle cx="130" cy="50" r="32"/><circle cx="168" cy="50" r="32"/><path d="M60 50h180M150 12v76"/><circle cx="150" cy="50" r="4"/></svg></span>
+          {% endif %}
+          <span class="book-entry-date">{{ post.date | date: '%Y.%m.%d' }}</span>
+          <h4 class="book-entry-title">{{ post.title | escape }}{% if post.title_en %}<span lang="en">{{ post.title_en | escape }}</span>{% endif %}</h4>
+          <p>{{ post.excerpt | strip_html | truncate: 76 }}{% if post.excerpt_en %}<span class="book-entry-excerpt-en" lang="en">{{ post.excerpt_en | escape }}</span>{% endif %}</p>
+          <span class="book-entry-read">阅读全文 <span lang="en">/ Read more</span> <span aria-hidden="true">↗</span></span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <div class="book-empty">
+      <svg viewBox="0 0 100 80" fill="none" aria-hidden="true"><path d="M20 18h44v49H20zM29 30h24M29 39h18M29 48h12M58 53l22-26 7 6-23 26-9 4z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <p>暂无文章<span lang="en">No posts yet.</span></p>
+    </div>
+    {% endif %}
+    <p class="book-page-number"><span>{{ include.posts.size }} 篇{% if include.kind == 'tech' %}手记 / <span lang="en">{% if include.posts.size == 1 %}note{% else %}notes{% endif %}</span>{% else %}随笔 / <span lang="en">{% if include.posts.size == 1 %}essay{% else %}essays{% endif %}</span>{% endif %}</span><span>{{ include.number }}</span></p>
+  </div>
+  <button class="book-cover" type="button" aria-expanded="false" aria-controls="{{ include.kind }}-pages" aria-label="打开 / Open {{ include.title }} {{ include.title_alt }}" data-book-cover>
+    <span class="book-cover-front">
+      <span class="book-cover-top"><span>{{ site.author.name | escape }}</span><span>卷 / VOL. {{ include.number }}</span></span>
+      <span class="book-cover-title">{{ include.title }}<span class="book-cover-title-alt">{{ include.title_alt }}</span></span>
+      <span class="book-cover-art" aria-hidden="true">
+        {% if include.kind == 'tech' %}
+        <svg viewBox="0 0 280 130" fill="none"><ellipse cx="140" cy="65" rx="101" ry="37" transform="rotate(-24 140 65)"/><ellipse cx="140" cy="65" rx="101" ry="37" transform="rotate(24 140 65)"/><path d="M39 65h202M140 13v104"/><circle cx="140" cy="65" r="10"/><circle class="art-dot" cx="53" cy="46" r="4"/><circle class="art-dot" cx="221" cy="84" r="4"/></svg>
+        {% else %}
+        <svg viewBox="0 0 280 130" fill="none"><circle cx="185" cy="39" r="20"/><path d="M18 106c28-12 50-44 75-41s39 38 63 30 51-35 106-9M18 117c38-5 58-32 87-26s34 26 70 17 57-17 87-10M30 106c23-10 46-19 65-15"/></svg>
+        {% endif %}
+      </span>
+      <span class="book-cover-bottom"><span>{{ include.posts.size }} 篇 / <span lang="en">{% if include.kind == 'tech' %}{% if include.posts.size == 1 %}note{% else %}notes{% endif %}{% else %}{% if include.posts.size == 1 %}essay{% else %}essays{% endif %}{% endif %}</span></span><span>翻开 / <span lang="en">Open</span> <span aria-hidden="true">↗</span></span></span>
+    </span>
+    <span class="book-cover-back" aria-hidden="true"></span>
+  </button>
+</section>

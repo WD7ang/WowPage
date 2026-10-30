@@ -1,0 +1,13 @@
+<section class="home-blog" id="blog" aria-labelledby="blog-heading" lang="zh-CN">
+  <h2 id="blog-heading" lang="en">Blog</h2>
+  <div class="library-heading">
+    <p class="library-hint"><span class="hover-hint">悬停翻开书封 <span lang="en">· Hover to open</span></span><span class="touch-hint">轻点翻开书封 <span lang="en">· Tap to open</span></span></p>
+  </div>
+  <div class="bookshelf" data-bookshelf>
+    {% assign tech_posts = site.posts | where_exp: 'post', 'post.categories contains "tech"' %}
+    {% assign essay_posts = site.posts | where_exp: 'post', 'post.categories contains "essays"' %}
+    {% include blog-book.html kind='tech' title='Tech' title_alt='技术' posts=tech_posts number='01' %}
+    {% include blog-book.html kind='essays' title='随笔' title_alt='Essays' posts=essay_posts number='02' %}
+  </div>
+</section>
+<script src="{{ '/assets/js/books.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
