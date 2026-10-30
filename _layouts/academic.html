@@ -12,7 +12,7 @@
   <meta property="og:image" content="{% if page.cover %}{{ page.cover | absolute_url }}{% else %}{{ site.author.avatar | prepend: '/images/' | absolute_url }}{% endif %}">
   <meta property="og:type" content="website">
   <link rel="icon" type="image/svg+xml" href="{{ '/images/placeholders/favicon.svg' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/academic.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/academic.css' | relative_url }}?v={{ site.time | date: '%s' }}">
   {% if page.extra_css %}<link rel="stylesheet" href="{{ page.extra_css | relative_url }}?v={{ site.time | date: '%s' }}">{% endif %}
   <link rel="alternate" type="application/atom+xml" title="{{ site.title | escape }} blog" href="{{ '/feed.xml' | relative_url }}">
   <script src="{{ '/assets/js/academic.js' | relative_url }}" defer></script>

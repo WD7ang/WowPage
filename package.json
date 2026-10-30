@@ -1,6 +1,6 @@
 {
   "name": "wowpage",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "private": true,
   "description": "A configurable academic homepage with publications, an empty bookshelf blog, and optional music.",
   "license": "MIT",

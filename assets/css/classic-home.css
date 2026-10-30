@@ -1,4 +1,4 @@
-/* Original homepage layout, with a translucent sky and blue/slate palette. */
+/* Original homepage layout, with a translucent landscape and blue/slate palette. */
 :root {
   --home-ink: #273444;
   --home-muted: #697386;
@@ -14,7 +14,7 @@ body::before {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background: url("../../images/sky.jpg") center / cover no-repeat;
+  background: url("../../images/background.jpg") center / cover no-repeat;
   opacity: var(--home-background-opacity);
 }
 .masthead {
@@ -28,6 +28,14 @@ body::before {
 .page__content .publication-card,
 .page__content .project-card { background: rgba(255, 255, 255, .82); }
 .page__content h1, .page__content h2, .page__content h3 { color: var(--home-accent); }
+.main-heading .intro-wave {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin: 0 .08em;
+  object-fit: contain;
+  vertical-align: -.12em;
+}
 .page__content h2, .masthead, .author__avatar img { border-color: var(--home-line); }
 .author__name { color: var(--home-ink); }
 .author__pronouns, .author__bio { color: var(--home-muted); }

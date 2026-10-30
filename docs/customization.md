@@ -129,4 +129,4 @@ Your English text.
 - `academic.css`：文章页面；`_includes/date.html`：首页日期格式。
 - `_sass/vendor/`、`assets/js/plugins/`：主题依赖，保留上游授权信息。
 
-`images/sky.jpg` 是保留的通用天空背景。可替换此文件，或修改 `classic-home.css` 中 `body::before` 的背景与 `--home-background-opacity`。
+`images/background.jpg` 是云与草地背景。可替换此文件，或修改 `classic-home.css` 中 `body::before` 的背景与 `--home-background-opacity`。样式链接带构建时间版本参数，发布后浏览器会获取更新的样式。
