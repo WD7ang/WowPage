@@ -116,7 +116,7 @@ The welcome heading uses [Permanent Marker](https://fonts.google.com/specimen/Pe
 
 ## Showcase
 
-| Preview | Link |
+| Preview (Mac) | Link |
 | --- | --- |
 | <img src="docs/showcase/weidong-tang.png" alt="Preview of Weidong Tang's homepage" width="520"> | **Weidong Tang**<br>[https://wd7ang.github.io/](https://wd7ang.github.io/) |
 | <img src="docs/showcase/zhiming-liu.png" alt="Preview of Zhiming Liu's homepage" width="520"> | **Zhiming Liu**<br>[https://mikuz12.github.io/](https://mikuz12.github.io/) |
