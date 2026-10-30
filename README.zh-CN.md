@@ -118,7 +118,7 @@ node scripts/check-site.mjs --baseurl /WowPage
 
 ## 展示案例
 
-| 例图（Mac） | 链接 |
-| --- | --- |
-| <img src="docs/showcase/weidong-tang.png" alt="汤维栋的个人主页预览" width="520"> | **汤维栋 · Weidong Tang**<br>[https://wd7ang.github.io/](https://wd7ang.github.io/) |
-| <img src="docs/showcase/zhiming-liu.png" alt="Zhiming Liu 的个人主页预览" width="520"> | **Zhiming Liu**<br>[https://mikuz12.github.io/](https://mikuz12.github.io/) |
+| 例图（Mac） | 例图（iPhone） | 链接 |
+| --- | --- | --- |
+| <img src="docs/showcase/weidong-tang.png" alt="汤维栋的个人主页 Mac 预览" width="400"> | <img src="docs/showcase/weidong-tang-iphone.png" alt="汤维栋的个人主页 iPhone 预览" width="160"> | **汤维栋 · Weidong Tang**<br>[https://wd7ang.github.io/](https://wd7ang.github.io/) |
+| <img src="docs/showcase/zhiming-liu.png" alt="Zhiming Liu 的个人主页 Mac 预览" width="400"> | <img src="docs/showcase/zhiming-liu-iphone.png" alt="Zhiming Liu 的个人主页 iPhone 预览" width="160"> | **Zhiming Liu**<br>[https://mikuz12.github.io/](https://mikuz12.github.io/) |
