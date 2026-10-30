@@ -1,4 +1,7 @@
-<h1 class="main-heading">Hi there <img class="intro-wave" src="{{ '/images/Hi.gif' | relative_url }}" width="32" height="32" alt=""> Welcome to my Homepage!</h1>
+<h1 class="main-heading">
+  <span class="greeting-lead"><span>Hi there</span><img class="intro-wave" src="{{ '/images/Hi.gif' | relative_url }}" width="32" height="32" alt=""></span>
+  <span class="greeting-message">Welcome to my Homepage!</span>
+</h1>
 {{ site.data.profile.intro_html }}
 {% if site.data.profile.interests.size > 0 %}
 <div class="research-interests" role="group" aria-labelledby="research-interests-label">

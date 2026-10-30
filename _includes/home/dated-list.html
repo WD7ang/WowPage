@@ -1,0 +1,11 @@
+<ul class="award-list">
+  {% for item in include.items %}
+  <li class="award-row">
+    <span class="award-date">{{ item.date | escape }}</span>
+    <div class="award-details">
+      <span class="award-title">{% if item.url and item.url != '' %}<a href="{{ item.url | relative_url }}">{{ item.title | escape }}</a>{% else %}{{ item.title | escape }}{% endif %}</span>
+      {% if item.details and item.details != '' %}<span class="award-meta">{{ item.details | escape }}</span>{% endif %}
+    </div>
+  </li>
+  {% endfor %}
+</ul>

@@ -124,6 +124,8 @@ Your English text.
 
 - `home-sections.css`：首页栏目与卡片。
 - `classic-home.css`：蓝灰主题、背景、布局与移动端调整。
+- `_includes/home/dated-list.html`：Awards、Talks、Services 共用的日期列表；统一样式在 `classic-home.css`。
+- `assets/fonts/permanent-marker/`：欢迎标题的本地手写字体及授权，无需请求外部字体服务。
 - `books.css` / `books.js`：博客书架。
 - `music-player.css` / `music-player.js`：可选播放器。
 - `academic.css`：文章页面；`_includes/date.html`：首页日期格式。

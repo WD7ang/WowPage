@@ -1,6 +1,2 @@
 <h2 id="services">Services</h2>
-<ul>
-  {% for service in site.data.services %}
-  <li><span class="news-date">{{ service.date | escape }}</span> {{ service.title | escape }}{% if service.details != '' %} · {{ service.details | escape }}{% endif %}</li>
-  {% endfor %}
-</ul>
+{% include home/dated-list.html items=site.data.services %}

@@ -9,7 +9,7 @@
 | [`main`](https://github.com/WD7ang/WowPage/tree/main) / [`v2`](https://github.com/WD7ang/WowPage/tree/v2) | 当前新版模板；内容集中维护，博客留空，无内置 CV |
 | [`v1`](https://github.com/WD7ang/WowPage/tree/v1) | 整理后的经典 WowPage；保留原版布局和趣味示例 |
 
-当前版本为 `v2.0.3`；经典版保留在 `v1` 分支及 `v1.0.0` 标签。两版均为独立、可运行的 Jekyll 项目，使用时只需要其中一个分支。历史变更见 [CHANGELOG](CHANGELOG.md)。
+当前版本为 `v2.0.4`；经典版保留在 `v1` 分支及 `v1.0.0` 标签。两版均为独立、可运行的 Jekyll 项目，使用时只需要其中一个分支。历史变更见 [CHANGELOG](CHANGELOG.md)。
 
 ## 本地启动
 
@@ -85,3 +85,5 @@ WowPage v2 is a Jekyll academic homepage with editable content data, publication
 ## Credits & license
 
 MIT; see [LICENSE](LICENSE). Built on [AcademicPages](https://github.com/academicpages/academicpages.github.io) and [Minimal Mistakes](https://github.com/mmistakes/minimal-mistakes). WowPage originated from [Yue Su / Selen-Suyue's template](https://selen-suyue.github.io/) and was developed by Weidong Tang and Yue Su. These credits identify the template's authors, not the example site's owner. Third-party font and script notices remain with their source files.
+
+The welcome heading uses [Permanent Marker](https://fonts.google.com/specimen/Permanent+Marker) by Font Diner, bundled locally under its [Apache 2.0 license](assets/fonts/permanent-marker/LICENSE.txt).
