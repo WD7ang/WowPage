@@ -28,6 +28,8 @@ jobs:
         env:
           JEKYLL_ENV: production
           SITE_BASEURL: ${{ matrix.baseurl }}
+          PAGES_REPO_NWO: ${{ github.repository }}
+          JEKYLL_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           bundle exec jekyll clean
           bundle exec jekyll build --baseurl "$SITE_BASEURL" --trace

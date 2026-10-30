@@ -9,7 +9,7 @@
 | [`main`](https://github.com/WD7ang/WowPage/tree/main) / [`v2`](https://github.com/WD7ang/WowPage/tree/v2) | 当前新版模板；首页与 CV 共用数据 |
 | [`v1`](https://github.com/WD7ang/WowPage/tree/v1) | 整理后的经典 WowPage；保留原版布局和趣味示例 |
 
-首次发布快照为 `v1.0.0` 和 `v2.0.0`。这两个版本均为独立、可运行的 Jekyll 项目，使用时只需要其中一个分支。
+当前稳定标签为 `v1.0.0` 和 `v2.0.1`（包含 CI 配置修正）；首次 v2 快照为 `v2.0.0`。这两个版本均为独立、可运行的 Jekyll 项目，使用时只需要其中一个分支。
 
 ## 本地启动
 
