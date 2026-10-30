@@ -1,0 +1,17 @@
+<h2 id="projects">Projects</h2>
+{% for project in site.data.home.projects %}
+<div class="project-card">
+  <div class="media-card-content">
+    <div class="pub-media-rotator" data-interval="4000">
+      <img src="{{ project.image | relative_url }}" alt="{{ project.title | escape }}" loading="lazy">
+    </div>
+    <div>
+      <strong>{{ project.title }}</strong><br>
+      <i class="paper-authors">{{ project.authors_html }}</i><br>
+      {{ project.summary }}<br>
+      <b><i class="paper-venue">Project</i></b>
+      {% include home/links.html links=project.links %}
+    </div>
+  </div>
+</div>
+{% endfor %}

@@ -40,7 +40,7 @@
         <li><a href="mailto:{{ author.email }}"><i class="fas fa-fw fa-envelope icon-pad-right" aria-hidden="true"></i>{{ site.data.ui-text[site.locale].email_label | default: "Email" }}</a></li>
       {% endif %}
       {% if author.WeChat %}
-        <li class="author__wechat"><a href="{{ author.WeChat }}"><i class="fab fa-fw fa-weixin icon-pad-right" aria-hidden="true"></i>WeChat</a></li>
+        <li class="author__wechat"><a href="{{ author.WeChat | relative_url }}"><i class="fab fa-fw fa-weixin icon-pad-right" aria-hidden="true"></i>WeChat</a></li>
       {% endif %}
       
       <!-- Font Awesome and Academicons icons / Academic websites -->

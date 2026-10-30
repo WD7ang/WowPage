@@ -1,3 +1,4 @@
+# WowPage v1 · site identity and Jekyll settings. Homepage content: _data/home/.
 locale                   : "en-US"
 title                    : "WowPage"
 title_separator          : "-"
@@ -8,7 +9,7 @@ baseurl                  : ""
 repository               : ""
 
 author:
-  avatar           : "1.png"
+  avatar           : "profile/avatar.png"
   name             : "Your Name"
   pronouns         :
   bio              : "Student and researcher."
@@ -107,6 +108,14 @@ include:
   - files
 
 exclude:
+  - examples
+  - tools
+  - docs
+  - local
+  - README.md
+  - CHANGELOG.md
+  - Gemfile.lock
+  - package-lock.json
   - "*.sublime-project"
   - "*.sublime-workspace"
   - .asset-cache

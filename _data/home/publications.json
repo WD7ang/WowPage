@@ -1,0 +1,64 @@
+[
+  {
+    "title": "SleepFormer v5: Towards Fully Autonomous Deadline Extension via Large Language Models",
+    "authors_html": "<a href=\"https://wd7ang.github.io/\"><strong>Weidong Tang</strong></a>, <a href=\"https://selen-suyue.github.io/\"><strong>Yue Su&dagger;</strong></a>.",
+    "venue": "ACL 3030",
+    "note": "Oral",
+    "core": false,
+    "links": []
+  },
+  {
+    "title": "SleepFormer v4: Towards Fully Autonomous Deadline Extension via Large Language Models",
+    "authors_html": "<a href=\"https://wd7ang.github.io/\"><strong>Weidong Tang</strong></a>, <a href=\"https://selen-suyue.github.io/\"><strong>Yue Su&dagger;</strong></a>.",
+    "venue": "ACL 3029",
+    "note": "Oral",
+    "core": false,
+    "links": []
+  },
+  {
+    "title": "SleepFormer v3: Towards Fully Autonomous Deadline Extension via Large Language Models",
+    "authors_html": "<a href=\"https://wd7ang.github.io/\"><strong>Weidong Tang</strong></a>, <a href=\"https://selen-suyue.github.io/\"><strong>Yue Su&dagger;</strong></a>.",
+    "venue": "ACL 3028",
+    "note": "Oral",
+    "core": false,
+    "links": []
+  },
+  {
+    "title": "SleepFormer v2: Towards Fully Autonomous Deadline Extension via Large Language Models",
+    "authors_html": "<a href=\"https://wd7ang.github.io/\"><strong>Weidong Tang</strong></a>, <a href=\"https://selen-suyue.github.io/\"><strong>Yue Su&dagger;</strong></a>.",
+    "venue": "ACL 3027",
+    "note": "Oral",
+    "core": false,
+    "links": []
+  },
+  {
+    "title": "SleepFormer: Towards Fully Autonomous Deadline Extension via Large Language Models",
+    "authors_html": "<a href=\"https://wd7ang.github.io/\"><strong>Weidong Tang</strong></a>, <a href=\"https://selen-suyue.github.io/\"><strong>Yue Su&dagger;</strong></a>.",
+    "venue": "ACL 3026",
+    "note": "Oral",
+    "core": true,
+    "image": "/images/publications/sleep.png",
+    "summary": "We present SleepFormer, the first framework capable of automatically generating convincing excuses for missed deadlines, skipped meetings, and unfinished experiments.",
+    "links": []
+  },
+  {
+    "title": "Are GPUs Emotionally Stable? A Large-Scale Empirical Study Under 24/7 Training Stress",
+    "authors_html": "NVIDIA RTX 9090*, <a href=\"https://selen-suyue.github.io/\"><strong>Yue Su*</strong></a>, <a href=\"https://wd7ang.github.io/\"><strong>Weidong Tang&dagger;</strong></a>.",
+    "venue": "ICLR 3026",
+    "note": "",
+    "core": true,
+    "image": "/images/publications/gpu.png",
+    "summary": "We conduct the first psychological evaluation of modern GPUs under extreme training conditions. Results reveal that 87% of devices exhibit symptoms of burnout after repeated “just one more epoch” requests.",
+    "links": []
+  },
+  {
+    "title": "Instant Noodles as a Scalable Training Infrastructure for Graduate Students",
+    "authors_html": "Noodles&Dagger;, <a href=\"https://selen-suyue.github.io/\"><strong>Yue Su*</strong></a>, <a href=\"https://wd7ang.github.io/\"><strong>Weidong Tang&dagger;</strong></a>.",
+    "venue": "ICML 3026",
+    "note": "",
+    "core": true,
+    "image": "/images/publications/noodle.png",
+    "summary": "We introduce Noodle-Scaling Law, showing that research productivity increases logarithmically with instant noodle consumption before collapsing catastrophically at 3 a.m.",
+    "links": []
+  }
+]

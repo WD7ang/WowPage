@@ -1,0 +1,14 @@
+[
+  {
+    "title": "WowPage",
+    "authors_html": "<a href=\"https://wd7ang.github.io/\"><strong>Weidong Tang</strong></a>, <a href=\"https://selen-suyue.github.io/\"><strong>Yue Su</strong></a>.",
+    "image": "/images/projects/wowpage.png",
+    "summary": "A clean academic homepage template, based on the original design by Yue Su and refined in collaboration with Weidong Tang.",
+    "links": [
+      {
+        "label": "code",
+        "url": "https://github.com/WD7ang/WowPage"
+      }
+    ]
+  }
+]

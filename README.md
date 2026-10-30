@@ -1,209 +1,81 @@
-﻿# WowPage
+# WowPage · v1
 
-WowPage is a clean, responsive academic homepage built with Jekyll and adapted from the Academic Pages theme. It is designed for students, researchers, and engineers who want a personal website for introducing their profile, publications, projects, experience, awards, talks, services, and CV.
+简洁的 Jekyll 学术主页模板。v1 保留 WowPage 原版的配色、侧栏、卡片和趣味示例内容，将内容、模板、样式与可选工具分开维护。示例论文、经历及奖项是演示内容，请替换后再发布。
 
-Template is originated from [selen-suyue.github.io](https://selen-suyue.github.io/).
-Example：[wd7ang.github.io](https://wd7ang.github.io).
-## Features
+v2 基于新版个人主页，提供占位资料、独立 CV、博客书架等功能；v1 保留原版体验。使用 [`v1`](https://github.com/WD7ang/WowPage/tree/v1) 分支或 `v1.0.0` 标签获取此版本；[`main`](https://github.com/WD7ang/WowPage/tree/main) 和 [`v2`](https://github.com/WD7ang/WowPage/tree/v2) 提供新版。
 
-- Academic-style homepage with author profile sidebar
-- Single-page navigation for news, experience, publications, projects, awards, services, and talks
-- Custom homepage styling through `assets/css/home.css`
-- Publication filtering on the homepage
-- CV link support through the navigation menu
-- Social profile fields managed from `_config.yml`
-- GitHub Pages compatible Jekyll setup
-- Sitemap and feed support through Jekyll plugins
+## 快速开始
 
-## Project Structure
+安装 Ruby、Bundler 和 Git 后，在仓库目录运行：
 
-```text
-.
-├── _config.yml              # Main site configuration and author metadata
-├── _data/
-│   ├── navigation.yml       # Header navigation links
-│   ├── authors.yml          # Optional author data
-│   └── ui-text.yml          # Theme UI text
-├── _includes/               # Reusable Liquid partials
-├── _layouts/                # Page layout templates
-├── _pages/                  # Main site pages, including the homepage
-├── _sass/                   # Theme Sass source files
-├── assets/                  # CSS, JavaScript, and theme assets
-├── images/                  # Profile, logos, publication images, and other media
-├── markdown_generator/      # Helper scripts/templates for generating markdown content
-├── talkmap/                 # Talk map page assets
-├── Gemfile                  # Ruby/Jekyll dependencies
-├── package.json             # JavaScript build dependencies and scripts
-└── LICENSE
-```
-
-## Getting Started
-
-### Prerequisites
-
-Install the following tools before running the site locally:
-
-- Ruby and Bundler
-- Node.js and npm
-- Git
-
-### Installation
-
-Clone the repository and install dependencies:
-
-```bash
-git clone <your-repository-url>
-cd WowPage
+```sh
 bundle install
-npm install
-```
-
-### Run Locally
-
-Start the Jekyll development server:
-
-```bash
 bundle exec jekyll serve
 ```
 
-Then open the local URL shown in the terminal, usually:
+打开终端显示的地址（默认 `http://127.0.0.1:4000`）。构建命令为 `bundle exec jekyll build`，输出在 `_site/`。**日常内容修改不需要 Node.js 或 npm。**
+
+## 修改哪里
+
+| 内容 | 文件 |
+| --- | --- |
+| 姓名、简介、邮箱、社交链接、站点地址 | `_config.yml` |
+| 顶部导航 | `_data/navigation.yml` |
+| 首页欢迎语 | `_data/home/intro.json` |
+| 新闻、经历、论文、项目 | `_data/home/news.json`、`experience.json`、`publications.json`、`projects.json` |
+| 奖项、服务、报告 | `_data/home/awards.json`、`services.json`、`talks.json` |
+| 首页栏目顺序 | `_pages/about.md` |
+| 栏目的 HTML | `_includes/home/` |
+| 首页配色和排版 | `assets/css/home.css` |
+| CV 占位页 | `_pages/cv.md` |
+
+论文数据中的 `core: true` 控制精选卡片；全部条目同时用于完整论文列表，避免重复维护。资源链接填写为 `{"label": "code", "url": "https://example.com/project"}`，没有链接时用 `[]`。`*_html` 字段允许自定义作者/导师链接；其他字段使用普通文本。
+
+## 目录
 
 ```text
-http://127.0.0.1:4000/
+_config.yml         个人信息、Jekyll 配置
+_data/home/         可替换的首页内容
+_includes/home/     首页栏目和公共卡片片段
+_pages/             实际发布的首页、CV、404、站点地图
+images/             profile / organizations / publications / projects / ui
+assets/css/         样式（home.css 是首页主要入口）
+assets/js/          交互脚本和主题构建源文件
+_layouts/           AcademicPages 页面框架
+_sass/              主题 Sass 与依赖
+examples/           可选页面、地图、示例数据；不发布
+tools/              Markdown 生成工具；不发布
 ```
 
-### Build the Site
+`_layouts/`、其余 `_includes/` 与 `_sass/` 保留上游主题能力；通常只需编辑 `_data/home/` 和 `_config.yml`。移出的示例可以按 `examples/README.md` 恢复。
 
-Generate the static site:
+## GitHub Pages
 
-```bash
-bundle exec jekyll build
-```
-
-The generated files will be written to `_site/`.
-
-## Customization
-
-### Basic Site Information
-
-Edit `_config.yml` to update the site title, description, URL, author name, biography, affiliation, location, email, avatar, and social links.
-
-Important fields include:
+使用此模板创建自己的仓库，在 Settings → Pages 中选择部署分支与根目录。用户主页仓库名为 `YOUR_USERNAME.github.io`：
 
 ```yaml
-title: "WowPage"
-name: "Your Name"
-description: "A clean academic homepage template."
-author:
-  avatar: "1.png"
-  name: "Your Name"
-  bio: "Student and researcher."
-  location: "City, Country"
-  employer: "Institution or Company"
-  email: "name@example.com"
+url: "https://YOUR_USERNAME.github.io"
+baseurl: ""
+repository: "YOUR_USERNAME/YOUR_USERNAME.github.io"
 ```
 
-### Homepage Content
+项目主页使用 `baseurl: "/YOUR_REPOSITORY"`，并相应修改 `repository`。内部资源与导航支持这个子路径。不要添加 `.nojekyll`。
 
-The homepage content is mainly maintained in:
+可选 PDF：放入 `files/cv.pdf`，再在 `_pages/cv.md` 中增加 `[Download PDF]({{ '/files/cv.pdf' | relative_url }})`。默认不链接不存在的简历文件。
 
-```text
-_pages/about.md
-```
+只有修改主题的 `_main.js` 或 `assets/js/plugins/` 后才需要：
 
-Update this file to edit sections such as news, experience, publications, projects, awards, services, talks, and the introductory text.
-
-### Navigation
-
-Edit the navigation menu in:
-
-```text
-_data/navigation.yml
-```
-
-For example:
-
-```yaml
-main:
-  - title: "News"
-    url: "/#news"
-  - title: "Experience"
-    url: "/#experience"
-  - title: "Pub"
-    url: "/#publications"
-  - title: "CV-En"
-    url: "/files/weidongtang_resume.pdf"
-```
-
-### Images and Media
-
-Place profile photos, organization logos, project images, publication thumbnails, and other visual assets in:
-
-```text
-images/
-```
-
-Reference them from pages using paths such as:
-
-```html
-<img src="images/example.png" alt="Example image">
-```
-
-### JavaScript and CSS
-
-Custom homepage styles can be edited in:
-
-```text
-assets/css/home.css
-```
-
-JavaScript assets are built with npm:
-
-```bash
+```sh
+npm install
 npm run build:js
 ```
 
-## Deployment
+其他独立 JS/CSS 与内容文件可直接编辑。启用某一页的数学公式时，在该页 front matter 设置 `mathjax: true`。
 
-This site is compatible with GitHub Pages.
+## English quick guide
 
-A typical deployment workflow is:
+WowPage v1 preserves the classic design. Edit identity in `_config.yml`, content in `_data/home/`, section markup in `_includes/home/`, and styling in `assets/css/home.css`. Run `bundle install` and `bundle exec jekyll serve`; npm is optional and only rebuilds the bundled legacy theme JavaScript. Configure `url`, `baseurl`, and `repository` for GitHub Pages. Optional inherited examples and generators are excluded from the site.
 
-1. Push the repository to GitHub.
-2. Open the repository settings on GitHub.
-3. Enable GitHub Pages.
-4. Select the branch and folder used for deployment.
-5. Update `url`, `baseurl`, and `repository` in `_config.yml` if needed.
+## License & credits
 
-For a user or organization site, the repository is commonly named:
-
-```text
-<username>.github.io
-```
-
-For a project site, set `baseurl` to the repository name:
-
-```yaml
-url: "https://<username>.github.io"
-baseurl: "/<repository-name>"
-```
-
-## Content Checklist
-
-Before publishing, consider updating:
-
-- Author name, bio, institution, location, and email in `_config.yml`
-- Avatar and profile images in `images/`
-- Navigation links in `_data/navigation.yml`
-- Homepage sections in `_pages/about.md`
-- CV file and CV link
-- Publication metadata, project descriptions, and external links
-- Analytics or site verification settings, if needed
-
-## License
-
-This project is released under the MIT License. See `LICENSE` for details.
-
-## Acknowledgements
-
-We appreciate your use of this template and look forward to your contributions. Contributors are welcome to voluntarily submit homepages built with this template for inclusion in our showcase.
+MIT — see [LICENSE](LICENSE). Built on [AcademicPages](https://github.com/academicpages/academicpages.github.io) / [Minimal Mistakes](https://github.com/mmistakes/minimal-mistakes), with the homepage design by [Yue Su](https://selen-suyue.github.io/) and [Weidong Tang](https://wd7ang.github.io/).

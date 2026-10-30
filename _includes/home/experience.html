@@ -1,0 +1,14 @@
+<h2 id="experience">Experience</h2>
+<div class="experience-container">
+  {% for item in site.data.home.experience %}
+  <div class="experience-card">
+    <img src="{{ item.logo | relative_url }}" alt="{{ item.organization | escape }} logo" class="experience-logo">
+    <div class="experience-info">
+      <strong>{{ item.organization }}</strong><br>
+      <em>{{ item.dates }}</em><br>
+      {{ item.role_html }}<br>
+      <span class="experience-description">{{ item.details }}</span>
+    </div>
+  </div>
+  {% endfor %}
+</div>

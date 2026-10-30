@@ -1,0 +1,5 @@
+{% assign intro = site.data.home.intro %}
+<h1 class="main-heading">{{ intro.heading }} <img src="{{ intro.wave | relative_url }}" width="40" alt="Waving hand"> {{ intro.welcome }}</h1>
+{% for paragraph in intro.paragraphs %}
+<p>{{ paragraph }}</p>
+{% endfor %}

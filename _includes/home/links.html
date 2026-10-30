@@ -1,0 +1,3 @@
+{% for link in include.links %}
+{% if link.url and link.url != empty %}<a href="{{ link.url | relative_url }}"><em>[{{ link.label }}]</em></a>{% endif %}
+{% endfor %}

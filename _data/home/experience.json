@@ -1,0 +1,23 @@
+[
+  {
+    "logo": "/images/organizations/haidilao.png",
+    "organization": "Haidilao",
+    "dates": "2026.05 - Present",
+    "role_html": "LLM Engineer Intern advised by <a href=\"https://wd7ang.github.io/\"><em>Weidong Tang</em></a>",
+    "details": "Main contribution: teaching hotpot robots to understand human emotions."
+  },
+  {
+    "logo": "/images/organizations/weijia.png",
+    "organization": "Weijia",
+    "dates": "2026.01 - 2026.03",
+    "role_html": "Machine Learning Intern advised by <a href=\"https://selen-suyue.github.io/\"><em>Yue Su</em></a>",
+    "details": "Successfully reduced GPU happiness by 97%."
+  },
+  {
+    "logo": "/images/organizations/mit.png",
+    "organization": "Massachusetts Institute of Technology",
+    "dates": "2023.09 - Present",
+    "role_html": "Rank 5/99, B.E at <a href=\"https://ste.xidian.edu.cn/\"><em>School of Telecommunication Engineering</em></a>",
+    "details": "Research interests include large models, multimodal learning, and surviving deadlines."
+  }
+]

@@ -1,0 +1,6 @@
+<h2 id="{{ include.id }}">{{ include.title }}</h2>
+<ul>
+  {% for item in include.items %}
+  <li>{{ item | markdownify | remove: '<p>' | remove: '</p>' }}</li>
+  {% endfor %}
+</ul>

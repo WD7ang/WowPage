@@ -1,0 +1,37 @@
+<h2 id="publications">Publications</h2>
+<div class="pub-button-container" aria-label="Publication view">
+  <button class="pub-button active" type="button" data-publication-filter="core" aria-pressed="true" aria-controls="core-publications">Core Publications</button>
+  <button class="pub-button" type="button" data-publication-filter="list" aria-pressed="false" aria-controls="full-publications">Full Publications List</button>
+</div>
+<p>(* equal contribution · &dagger; corresponding author · &Dagger; project leader)</p>
+<div id="core-publications" class="publication-view" data-publication-view="core">
+  {% for paper in site.data.home.publications %}{% if paper.core %}
+  <div class="publication-card">
+    <div class="media-card-content">
+      <div class="pub-media-rotator" data-interval="4000">
+        <img src="{{ paper.image | relative_url }}" alt="{{ paper.title | escape }}" loading="lazy">
+      </div>
+      <div>
+        <strong>{{ paper.title }}</strong><br>
+        <i class="paper-authors">{{ paper.authors_html }}</i><br>
+        {{ paper.summary }}<br>
+        <b><i class="paper-venue">{{ paper.venue }} {{ paper.note }}</i></b>
+        {% include home/links.html links=paper.links %}
+      </div>
+    </div>
+  </div>
+  {% endif %}{% endfor %}
+</div>
+<div id="full-publications" class="publication-view" data-publication-view="list" hidden>
+  <ul class="full-publication-list">
+    {% for paper in site.data.home.publications %}
+    <li>
+      <span class="pub-list-badge">{{ paper.venue }}</span>
+      <span class="pub-list-title">{{ paper.title }}</span><br>
+      <span class="pub-list-authors">{{ paper.authors_html }}</span>
+      {% if paper.note != empty %}<span class="pub-list-note">{{ paper.note }}.</span>{% endif %}
+      <span class="pub-list-links">{% include home/links.html links=paper.links %}</span>
+    </li>
+    {% endfor %}
+  </ul>
+</div>

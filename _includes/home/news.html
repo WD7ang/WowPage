@@ -1,0 +1,8 @@
+<h2 id="news">News</h2>
+<div class="news-box">
+  <ul class="news-list">
+    {% for item in site.data.home.news %}
+    <li><span class="news-date"><em>{{ item.date }}</em></span> {{ item.text }}</li>
+    {% endfor %}
+  </ul>
+</div>
