@@ -1,209 +1,87 @@
-﻿# WowPage
+# WowPage · v2
 
-WowPage is a clean, responsive academic homepage built with Jekyll and adapted from the Academic Pages theme. It is designed for students, researchers, and engineers who want a personal website for introducing their profile, publications, projects, experience, awards, talks, services, and CV.
+一个简洁、可直接部署到 GitHub Pages 的学术主页模板。保留蓝灰色主页、论文卡片与完整列表切换、双语博客书架、可打印 CV 和可选音乐播放器。所有人物、经历、论文、联系方式及配图均为占位示例。
 
-Template is originated from [selen-suyue.github.io](https://selen-suyue.github.io/).
-Example：[wd7ang.github.io](https://wd7ang.github.io).
-## Features
+## 版本
 
-- Academic-style homepage with author profile sidebar
-- Single-page navigation for news, experience, publications, projects, awards, services, and talks
-- Custom homepage styling through `assets/css/home.css`
-- Publication filtering on the homepage
-- CV link support through the navigation menu
-- Social profile fields managed from `_config.yml`
-- GitHub Pages compatible Jekyll setup
-- Sitemap and feed support through Jekyll plugins
+| 分支 | 内容 |
+| --- | --- |
+| [`main`](https://github.com/WD7ang/WowPage/tree/main) / [`v2`](https://github.com/WD7ang/WowPage/tree/v2) | 当前新版模板；首页与 CV 共用数据 |
+| [`v1`](https://github.com/WD7ang/WowPage/tree/v1) | 整理后的经典 WowPage；保留原版布局和趣味示例 |
 
-## Project Structure
+首次发布快照为 `v1.0.0` 和 `v2.0.0`。这两个版本均为独立、可运行的 Jekyll 项目，使用时只需要其中一个分支。
 
-```text
-.
-├── _config.yml              # Main site configuration and author metadata
-├── _data/
-│   ├── navigation.yml       # Header navigation links
-│   ├── authors.yml          # Optional author data
-│   └── ui-text.yml          # Theme UI text
-├── _includes/               # Reusable Liquid partials
-├── _layouts/                # Page layout templates
-├── _pages/                  # Main site pages, including the homepage
-├── _sass/                   # Theme Sass source files
-├── assets/                  # CSS, JavaScript, and theme assets
-├── images/                  # Profile, logos, publication images, and other media
-├── markdown_generator/      # Helper scripts/templates for generating markdown content
-├── talkmap/                 # Talk map page assets
-├── Gemfile                  # Ruby/Jekyll dependencies
-├── package.json             # JavaScript build dependencies and scripts
-└── LICENSE
-```
+## 本地启动
 
-## Getting Started
+需要 Ruby、Bundler 和 Git。日常编辑与部署不需要 Node.js。
 
-### Prerequisites
-
-Install the following tools before running the site locally:
-
-- Ruby and Bundler
-- Node.js and npm
-- Git
-
-### Installation
-
-Clone the repository and install dependencies:
-
-```bash
-git clone <your-repository-url>
+```sh
+git clone https://github.com/WD7ang/WowPage.git
 cd WowPage
 bundle install
-npm install
-```
-
-### Run Locally
-
-Start the Jekyll development server:
-
-```bash
 bundle exec jekyll serve
 ```
 
-Then open the local URL shown in the terminal, usually:
+打开 `http://127.0.0.1:4000`。修改 `_config.yml` 后重启服务。构建命令为 `bundle exec jekyll build`，输出到 `_site/`。
+
+## 改哪里
+
+| 想修改的内容 | 文件 |
+| --- | --- |
+| 姓名、头像、邮件、社交账号、站点地址 | `_config.yml` |
+| 自我介绍、研究标签、CV 标题、可选 PDF | `_data/profile.json` |
+| 导航菜单 | `_data/navigation.yml` |
+| 新闻 | `_data/news.json` |
+| 教育、经历 | `_data/education.json`、`_data/experience.json` |
+| 论文、项目 | `_data/publications.json`、`_data/projects.json` |
+| 奖项、报告、服务 | `_data/awards.json`、`_data/talks.json`、`_data/services.json` |
+| 技术博客 / 随笔 | `_posts/`，示例文章可替换或删除 |
+| 可选歌单 | `_data/music.json`；空数组时隐藏播放器 |
+| 图片 | `images/`；通用配图位于 `images/placeholders/` |
+
+首页与 CV 的教育、经历、论文、项目、奖项和服务共用上述数据。论文的 `featured: true` 控制是否显示为首页卡片；完整列表和 CV 展示全部论文。
+
+## 目录分工
 
 ```text
-http://127.0.0.1:4000/
+_config.yml          站点身份与 Jekyll 设置
+_data/               可编辑内容，一处维护
+_pages/              首页、CV、博客入口、404、站点地图
+_posts/              博客文章
+_includes/home/      首页各栏目组件
+_includes/           主题、书架、音乐、CV 等可复用组件
+_layouts/            页面外框
+assets/css/          主页、书架、音乐、CV 等样式
+assets/js/           按功能拆分的交互脚本
+_sass/               AcademicPages 基础主题及第三方依赖
+images/              通用素材与占位图
+docs/                自定义与部署说明（不发布到网站）
+scripts/             构建结果检查（不发布到网站）
 ```
 
-### Build the Site
+`_pages/about.md` 只负责栏目顺序；内容改 `_data/`，结构改 `_includes/home/`，外观改 `assets/css/`，不用在一个长文件里同时修改 HTML、CSS 和个人资料。
 
-Generate the static site:
+## 部署与验证
 
-```bash
+1. 使用 **Use this template** 创建自己的仓库。
+2. 配置 `_config.yml` 的 `url`、`baseurl`、`repository`。个人站点 `baseurl: ""`；项目站点例如 `baseurl: "/WowPage"`。
+3. 仓库 **Settings → Pages → Deploy from a branch**，选择 `main` 与 `/ (root)`。
+
+构建后可用 Node.js 20+ 检查本地链接、图片和锚点，无需 `npm install`：
+
+```sh
 bundle exec jekyll build
+node scripts/check-site.mjs
 ```
 
-The generated files will be written to `_site/`.
+CI 会分别检查根路径与 `/WowPage` 子路径。若要修改基础主题 JS 后重建 `main.min.js`，再执行 `npm install` 与 `npm run build:js`。业务脚本无需打包。
 
-## Customization
+详细字段与使用示例见 [自定义指南](docs/customization.md)，版本差异见 [CHANGELOG](CHANGELOG.md)。
 
-### Basic Site Information
+## English quick start
 
-Edit `_config.yml` to update the site title, description, URL, author name, biography, affiliation, location, email, avatar, and social links.
+WowPage v2 is a Jekyll academic homepage with shared homepage/CV data, publication views, a bilingual bookshelf blog, and optional music. Edit `_config.yml` for identity and `_data/` for content. Run `bundle install` and `bundle exec jekyll serve`. Set `url` and `baseurl` before enabling GitHub Pages. All sample content is fictional; the original personal photos, QR codes, papers, CV PDF, metrics, and playlist are excluded.
 
-Important fields include:
+## Credits & license
 
-```yaml
-title: "WowPage"
-name: "Your Name"
-description: "A clean academic homepage template."
-author:
-  avatar: "1.png"
-  name: "Your Name"
-  bio: "Student and researcher."
-  location: "City, Country"
-  employer: "Institution or Company"
-  email: "name@example.com"
-```
-
-### Homepage Content
-
-The homepage content is mainly maintained in:
-
-```text
-_pages/about.md
-```
-
-Update this file to edit sections such as news, experience, publications, projects, awards, services, talks, and the introductory text.
-
-### Navigation
-
-Edit the navigation menu in:
-
-```text
-_data/navigation.yml
-```
-
-For example:
-
-```yaml
-main:
-  - title: "News"
-    url: "/#news"
-  - title: "Experience"
-    url: "/#experience"
-  - title: "Pub"
-    url: "/#publications"
-  - title: "CV-En"
-    url: "/files/weidongtang_resume.pdf"
-```
-
-### Images and Media
-
-Place profile photos, organization logos, project images, publication thumbnails, and other visual assets in:
-
-```text
-images/
-```
-
-Reference them from pages using paths such as:
-
-```html
-<img src="images/example.png" alt="Example image">
-```
-
-### JavaScript and CSS
-
-Custom homepage styles can be edited in:
-
-```text
-assets/css/home.css
-```
-
-JavaScript assets are built with npm:
-
-```bash
-npm run build:js
-```
-
-## Deployment
-
-This site is compatible with GitHub Pages.
-
-A typical deployment workflow is:
-
-1. Push the repository to GitHub.
-2. Open the repository settings on GitHub.
-3. Enable GitHub Pages.
-4. Select the branch and folder used for deployment.
-5. Update `url`, `baseurl`, and `repository` in `_config.yml` if needed.
-
-For a user or organization site, the repository is commonly named:
-
-```text
-<username>.github.io
-```
-
-For a project site, set `baseurl` to the repository name:
-
-```yaml
-url: "https://<username>.github.io"
-baseurl: "/<repository-name>"
-```
-
-## Content Checklist
-
-Before publishing, consider updating:
-
-- Author name, bio, institution, location, and email in `_config.yml`
-- Avatar and profile images in `images/`
-- Navigation links in `_data/navigation.yml`
-- Homepage sections in `_pages/about.md`
-- CV file and CV link
-- Publication metadata, project descriptions, and external links
-- Analytics or site verification settings, if needed
-
-## License
-
-This project is released under the MIT License. See `LICENSE` for details.
-
-## Acknowledgements
-
-We appreciate your use of this template and look forward to your contributions. Contributors are welcome to voluntarily submit homepages built with this template for inclusion in our showcase.
+MIT; see [LICENSE](LICENSE). Built on [AcademicPages](https://github.com/academicpages/academicpages.github.io) and [Minimal Mistakes](https://github.com/mmistakes/minimal-mistakes). WowPage originated from [Yue Su / Selen-Suyue's template](https://selen-suyue.github.io/) and was developed by Weidong Tang and Yue Su. These credits identify the template's authors, not the example site's owner. Third-party font and script notices remain with their source files.

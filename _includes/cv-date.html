@@ -1,0 +1,8 @@
+{%- if include.value contains '/' -%}
+  {%- assign date_parts = include.value | split: '/' -%}
+  {%- assign month_index = date_parts[0] | plus: 0 | minus: 1 -%}
+  {%- assign month_names = 'Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec' | split: ',' -%}
+  {{- month_names[month_index] }} {{ date_parts[1] | escape -}}
+{%- else -%}
+  {{- include.value | escape -}}
+{%- endif -%}

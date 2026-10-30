@@ -1,0 +1,6 @@
+<h2 id="awards">Awards</h2>
+<ul class="award-list">
+  {% for award in site.data.awards %}
+  <li class="award-row"><span class="award-date">{{ award.date | escape }}</span><div class="award-details"><span class="award-title">{{ award.title | escape }}</span><span class="award-meta">{{ award.details | escape }}</span></div></li>
+  {% endfor %}
+</ul>

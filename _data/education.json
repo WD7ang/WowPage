@@ -1,0 +1,20 @@
+[
+  {
+    "organization": "Your University",
+    "url": "https://example.com",
+    "logo": "/images/placeholders/institution.svg",
+    "degree": "Ph.D. Student in Your Field",
+    "date_start": "09/2024",
+    "date_end": "Present",
+    "details_html": "Research area: your topic. Advisor: Professor Example."
+  },
+  {
+    "organization": "Example University",
+    "url": "https://example.com",
+    "logo": "/images/placeholders/institution.svg",
+    "degree": "B.Sc. in Your Field",
+    "date_start": "09/2020",
+    "date_end": "06/2024",
+    "details_html": "Add your department, coursework, or thesis topic."
+  }
+]

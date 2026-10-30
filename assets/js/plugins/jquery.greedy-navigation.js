@@ -17,7 +17,7 @@ function updateNav() {
   var availableSpace = $btn.hasClass('hidden') ? $nav.width() : $nav.width() - $btn.width() - 30;
 
   // The visible list is overflowing the nav
-  if($vlinks.width() > availableSpace) {
+  if($vlinks.width() > availableSpace && $vlinks.children('*:not(.masthead__menu-item--lg)').length) {
 
     // Record the width of the list
     breaks.push($vlinks.width());
@@ -39,6 +39,8 @@ function updateNav() {
       // Move the item to the visible list
       $hlinks.children().first().appendTo($vlinks);
       breaks.pop();
+      updateNav();
+      return;
     }
 
     // Hide the dropdown btn if hidden list is empty
@@ -52,7 +54,7 @@ function updateNav() {
   $btn.attr("count", breaks.length);
 
   // Recur if the visible list is still overflowing the nav
-  if($vlinks.width() > availableSpace) {
+  if($vlinks.width() > availableSpace && $vlinks.children('*:not(.masthead__menu-item--lg)').length) {
     updateNav();
   }
 

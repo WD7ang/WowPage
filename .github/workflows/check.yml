@@ -1,0 +1,37 @@
+name: Check template
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        baseurl: ["", "/WowPage"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Build a clean static site
+        env:
+          JEKYLL_ENV: production
+          SITE_BASEURL: ${{ matrix.baseurl }}
+        run: |
+          bundle exec jekyll clean
+          bundle exec jekyll build --baseurl "$SITE_BASEURL" --trace
+      - name: Check links, assets, anchors, and output files
+        env:
+          SITE_BASEURL: ${{ matrix.baseurl }}
+        run: node scripts/check-site.mjs --baseurl "$SITE_BASEURL"

@@ -1,0 +1,44 @@
+{% if site.data.music.size > 0 %}
+{% assign first_track = site.data.music | first %}
+<section class="home-music" id="music" aria-label="音乐 / Music" data-music-player>
+  <button class="music-button music-mobile-play" type="button" aria-label="播放 / Play" title="播放 / Play" data-music-mobile-play data-music-enhanced hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path class="music-play-symbol" d="m9 5 10 7-10 7V5Z"/><path class="music-pause-symbol" d="M9 5v14M16 5v14"/></svg></button>
+  <div class="music-heading"><span>Music <span lang="zh-CN">/ 音乐</span></span><span data-music-count>01 / {{ site.data.music.size }}</span></div>
+  <div class="music-layout" data-music-enhanced hidden>
+    <div class="music-deck" id="music-deck">
+      <button class="music-record" type="button" aria-label="播放 / Play" title="播放 / Play" data-music-record>
+        <span class="music-disc"><img src="{{ first_track.cover | relative_url }}" alt="{{ first_track.title | escape }}" width="160" height="160" data-music-cover></span>
+      </button>
+      <div class="music-now-playing"><strong data-music-title>{{ first_track.title }}</strong><span data-music-artist>{{ first_track.artist }}</span></div>
+      <div class="music-transport">
+        <button class="music-button" type="button" aria-label="上一首 / Previous track" title="上一首 / Previous" data-music-prev><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5v14M18 5l-9 7 9 7V5Z"/></svg></button>
+        <button class="music-button music-play" type="button" aria-label="播放 / Play" title="播放 / Play" data-music-play><svg viewBox="0 0 24 24" aria-hidden="true"><path class="music-play-symbol" d="m9 5 10 7-10 7V5Z"/><path class="music-pause-symbol" d="M9 5v14M16 5v14"/></svg></button>
+        <button class="music-button" type="button" aria-label="下一首 / Next track" title="下一首 / Next" data-music-next><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 5v14M6 5l9 7-9 7V5Z"/></svg></button>
+      </div>
+    </div>
+    <ol class="music-playlist" aria-label="播放列表 / Playlist" data-music-playlist>
+      {% for track in site.data.music %}
+      <li><button class="music-track" type="button" data-music-track data-id="{{ track.id }}" data-title="{{ track.title | escape }}" data-artist="{{ track.artist | escape }}" data-source="{{ track.source | relative_url }}" data-cover="{{ track.cover | relative_url }}" data-duration="{{ track.duration }}" title="{{ track.title | escape }} — {{ track.artist | escape }}" aria-label="播放 / Play {{ track.title | escape }} — {{ track.artist | escape }}" aria-current="{% if forloop.first %}true{% else %}false{% endif %}">
+        <img src="{{ track.cover | relative_url }}" alt="" width="24" height="24" draggable="false" loading="lazy"><span>{{ track.title }}</span>
+      </button></li>
+      {% endfor %}
+    </ol>
+  </div>
+  <button class="music-button music-toggle" type="button" aria-label="展开音乐播放器 / Expand music player" title="展开 / Expand" aria-expanded="false" aria-controls="music-deck music-details" data-music-toggle data-music-enhanced hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+  <audio class="music-audio" controls preload="none" src="{{ first_track.source | relative_url }}" data-music-audio></audio>
+  <div class="music-details" id="music-details">
+  <div class="music-progress" data-music-enhanced hidden>
+    <input type="range" min="0" max="100" value="0" step="0.1" aria-label="播放进度 / Playback position" data-music-seek disabled>
+    <div class="music-times"><span data-music-elapsed>0:00</span><span data-music-duration>--:--</span></div>
+  </div>
+  <div class="music-volume" data-music-enhanced hidden>
+    <button class="music-button music-mute" type="button" aria-label="静音 / Mute" aria-pressed="false" title="静音 / Mute" data-music-mute><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4V9Z"/><path class="music-sound-symbol" d="M17 8c3 2 3 6 0 8M20 5c5 4 5 10 0 14"/><path class="music-muted-symbol" d="m17 9 5 6m0-6-5 6"/></svg></button>
+    <input type="range" min="0" max="100" step="1" value="80" aria-label="音量 / Volume" data-music-volume>
+    <output data-music-volume-value>80%</output>
+  </div>
+  <p class="music-status" role="status" aria-live="polite" data-music-status>点击播放 / Press play</p>
+  <a class="music-source" href="{{ first_track.source | relative_url }}" target="_blank" rel="noopener noreferrer" data-music-link>打开歌曲 <span lang="en">/ Open track</span> ↗</a>
+  </div>
+  <noscript><p class="music-noscript">{% for track in site.data.music %}<a href="{{ track.source | relative_url }}" target="_blank" rel="noopener noreferrer">{{ track.title }}</a>{% unless forloop.last %} · {% endunless %}{% endfor %}</p></noscript>
+</section>
+<script src="{{ '/assets/js/music-player.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+{% endif %}

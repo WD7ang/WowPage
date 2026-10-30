@@ -4,6 +4,9 @@ main:
   - title: "News"
     url: "/#news"
 
+  - title: "Education"
+    url: "/#education"
+
   - title: "Experience"
     url: "/#experience"
 
@@ -13,17 +16,17 @@ main:
   - title: "Project"
     url: "/#projects"
 
+  - title: "Blog"
+    url: "/#blog"
+
   - title: "Awards"
     url: "/#awards"
 
-  - title: "Services"
-    url: "/#services"
-    
   - title: "Talks"
     url: "/#talks"
-    
-  - title: "CV-En"
-    url: "/files/weidongtang_resume.pdf"
 
-  # - title: "CV-Cn"
-  #   url: "/files/chinese_resume.pdf"
+  - title: "Services"
+    url: "/#services"
+
+  - title: "CV"
+    url: "/cv/"

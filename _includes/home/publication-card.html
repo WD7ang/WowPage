@@ -1,0 +1,17 @@
+{% assign publication = include.publication %}
+<div class="publication-card">
+  <div class="card-content">
+    {% if publication.image and publication.image != '' %}
+    <div class="pub-media-rotator">
+      <img src="{{ publication.image | relative_url }}" alt="{{ publication.image_alt | default: publication.title | escape }}" loading="lazy" width="640" height="360">
+    </div>
+    {% endif %}
+    <div class="card-description">
+      <strong>{% if publication.title_url and publication.title_url != '' %}<a href="{{ publication.title_url | relative_url }}">{{ publication.title | escape }}</a>{% else %}{{ publication.title | escape }}{% endif %}</strong>
+      <p class="publication-authors">{{ publication.authors_html }}</p>
+      <p>{{ publication.description | escape }}</p>
+      <span class="publication-venue">{{ publication.venue | escape }}</span>
+      {% for link in publication.links %}<a href="{{ link.url | relative_url }}">[{{ link.label | escape }}]</a> {% endfor %}
+    </div>
+  </div>
+</div>

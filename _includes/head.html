@@ -17,10 +17,5 @@
 
 <!-- For all browsers -->
 <link rel="stylesheet" href="{{ base_path }}/assets/css/main.css">
-{% if page.stylesheets %}
-  {% for stylesheet in page.stylesheets %}
-    <link rel="stylesheet" href="{{ stylesheet | prepend: base_path }}">
-  {% endfor %}
-{% endif %}
 
 <meta http-equiv="cleartype" content="on">

@@ -8,30 +8,27 @@
 
   <div class="author__avatar">
     {% if author.avatar contains "://" %}
-      <img src="{{ author.avatar }}" alt="{{ author.name }}">
+      <img src="{{ author.avatar | escape }}" alt="{{ author.name | escape }}">
     {% else %}
-      {% assign avatar_path = author.avatar | remove_first: "/images/" | prepend: "/images/" | prepend: base_path %}
-      <img src="{{ avatar_path }}" alt="{{ author.name }}">
+      <img src="{{ author.avatar | remove_first: '/images/' | prepend: '/images/' | relative_url }}" class="author__avatar" alt="{{ author.name | escape }}">
     {% endif %}
   </div>
 
   <div class="author__content">
-    <h3 class="author__name">{{ author.name }}</h3>
+    <h3 class="author__name">{{ author.name | escape }}</h3>
     {% if author.pronouns %}<p class="author__pronouns">{{ author.pronouns }}</p>{% endif %}
     {% if author.bio %}<p class="author__bio">{{ author.bio }}</p>{% endif %}
   </div>
 
   <div class="author__urls-wrapper">
-    <button class="btn btn--inverse">Follow</button>
+    <button class="btn btn--inverse" type="button" aria-expanded="false">Follow</button>
     <ul class="author__urls social-icons">
       <!-- Font Awesome icons / Biographic information  -->
       {% if author.location %}
-        {% assign location_query = author.location | url_encode %}
-        <li class="author__desktop"><a href="https://www.google.com/maps/search/?api=1&query={{ location_query }}" target="_blank" rel="noopener"><i class="fas fa-fw fa-location-dot icon-pad-right" aria-hidden="true"></i>{{ author.location }}</a></li>
+         <li class="author__desktop"><a href="https://www.google.com/maps/place/{{ author.location | replace: ' ', '+' }}"><i class="fas fa-fw fa-location-dot icon-pad-right" aria-hidden="true"></i>{{ author.location }}</a></li>
       {% endif %}
       {% if author.employer %}
-        {% assign employer_query = author.employer | url_encode %}
-        <li class="author__desktop author__contact"><a href="https://www.google.com/search?q={{ employer_query }}" target="_blank" rel="noopener"><i class="fas fa-fw fa-building-columns icon-pad-right" aria-hidden="true"></i>{{ author.employer }}</a></li>
+        <li class="author__desktop author__contact"><span><i class="fa fa-solid fa-fw fa-building-columns icon-pad-right" aria-hidden="true"></i>{{ author.employer }}</span></li>
       {% endif %}
       {% if author.uri %}
         <li><a href="{{ author.uri }}"><i class="fas fa-fw fa-link icon-pad-right" aria-hidden="true"></i>{{ site.data.ui-text[site.locale].website_label | default: "Website" }}</a></li>
@@ -40,27 +37,27 @@
         <li><a href="mailto:{{ author.email }}"><i class="fas fa-fw fa-envelope icon-pad-right" aria-hidden="true"></i>{{ site.data.ui-text[site.locale].email_label | default: "Email" }}</a></li>
       {% endif %}
       {% if author.WeChat %}
-        <li class="author__wechat"><a href="{{ author.WeChat }}"><i class="fab fa-fw fa-weixin icon-pad-right" aria-hidden="true"></i>WeChat</a></li>
+        <li class="author__wechat"><a href="{% if author.WeChat contains '://' %}{{ author.WeChat | escape }}{% else %}{{ author.WeChat | prepend: '/images/' | relative_url }}{% endif %}"><i class="fab fa-fw fa-weixin icon-pad-right" aria-hidden="true"></i>WeChat</a></li>
       {% endif %}
       
       <!-- Font Awesome and Academicons icons / Academic websites -->
       {% if author.arxiv %}
-        <li><a href="{{ author.arxiv }}"><i class="ai ai-fw ai-arxiv icon-pad-right" aria-hidden="true"></i>arXiv</a></li>
+        <li><a href="{{ author.arxiv }}"><i class="ai ai-arxiv ai-fw icon-pad-right"></i>arXiv</a></li>
       {% endif %}      
       {% if author.googlescholar %}
-        <li><a href="{{ author.googlescholar }}"><i class="fas fa-fw fa-graduation-cap icon-pad-right" aria-hidden="true"></i>Google Scholar</a></li>
+        <li><a href="{{ author.googlescholar }}"><i class="fa-solid fa-graduation-cap" style="color: #74C0FC;"></i>Google Scholar</a></li>
       {% endif %}
       {% if author.semantic %}
-        <li><a href="{{ author.semantic }}"><i class="ai ai-fw ai-semantic-scholar icon-pad-right" aria-hidden="true"></i>Semantic Scholar</a></li>
+        <li><a href="{{ author.semantic }}"><i class="ai ai-semantic-scholar ai-fw icon-pad-right"></i>Semantic Scholar</a></li>
       {% endif %}
       {% if author.impactstory %}
-        <li><a href="{{ author.impactstory }}"><i class="ai ai-fw ai-impactstory icon-pad-right" aria-hidden="true"></i>Impactstory</a></li>
+        <li><a href="{{ author.impactstory }}"><i class="ai ai-impactstory ai-fw icon-pad-right"></i>Impactstory</a></li>
       {% endif %}
       {% if author.orcid %}
-        <li><a href="{{ author.orcid }}"><i class="ai ai-fw ai-orcid icon-pad-right" aria-hidden="true"></i>ORCID</a></li>
+        <li><a href="{{ author.orcid }}"><i class="ai ai-orcid ai-fw icon-pad-right"></i>ORCID</a></li>
       {% endif %}
       {% if author.pubmed %}
-        <li><a href="{{ author.pubmed }}"><i class="ai ai-fw ai-pubmed icon-pad-right" aria-hidden="true"></i>PubMed</a></li>
+        <li><a href="{{ author.pubmed }}"><i class="ai ai-pubmed ai-fw icon-pad-right"></i>PubMed</a></li>
       {% endif %}                        
       {% if author.researchgate %}
         <li><a href="{{ author.researchgate }}"><i class="fab fa-fw fa-researchgate icon-pad-right" aria-hidden="true"></i>ResearchGate</a></li>
@@ -138,8 +135,8 @@
       {% if author.tumblr %}
         <li><a href="https://{{ author.tumblr }}.tumblr.com"><i class="fab fa-fw fa-tumblr icon-pad-right" aria-hidden="true"></i>Tumblr</a></li>
       {% endif %} 
-      {% if author.bilibili %}
-        <li><a href="{{ author.bilibili }}"><i class="fab fa-fw fa-bilibili icon-pad-right" aria-hidden="true"></i>Bilibili</a></li>
+       {% if author.bilibili %}
+      <li><a href="{{ author.bilibili }}"><i class="fa-brands fa-bilibili icon-pad-right" style="color: #c52081;" aria-hidden="true"></i>Bilibili</a></li>
       {% endif %} 
       {% if author.twitter %}
         <li><a href="https://twitter.com/{{ author.twitter }}"><i class="fab fa-fw fa-twitter icon-pad-right" aria-hidden="true"></i>Twitter</a></li>
@@ -160,10 +157,10 @@
         <li><a href="{{ author.youtube }}"><i class="fab fa-fw fa-youtube icon-pad-right" aria-hidden="true"></i>YouTube</a></li>
       {% endif %}
       {% if author.zhihu %}
-        <li><a href="{{ author.zhihu }}"><i class="fab fa-fw fa-zhihu icon-pad-right" aria-hidden="true"></i>Zhihu</a></li>
+      <li><a href="{{ author.zhihu }}"><i class="fab fa-fw fa-zhihu icon-pad-right" style="color: #3584c0;" aria-hidden="true"></i>Zhihu</a></li>
       {% endif %}     
       {% if author.XiaoHongShu %}
-        <li><a href="{{ author.XiaoHongShu }}"><i class="fas fa-fw fa-book icon-pad-right" aria-hidden="true"></i>RedNote</a></li>
+      <li><a href="{{ author.XiaoHongShu }}"><i class="fa-solid fa-book icon-pad-right" style="color: #d23737;" aria-hidden="true"></i>RedNote</a></li>
       {% endif %} 
     </ul>
   </div>

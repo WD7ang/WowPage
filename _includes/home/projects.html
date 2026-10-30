@@ -1,0 +1,13 @@
+<h2 id="projects">Projects</h2>
+{% for project in site.data.projects %}
+<div class="project-card">
+  <div class="card-content">
+    {% if project.image and project.image != '' %}<div class="pub-media-rotator"><img src="{{ project.image | relative_url }}" alt="{{ project.title | escape }}" loading="lazy" width="640" height="360"></div>{% endif %}
+    <div class="card-description">
+      <strong>{% if project.url and project.url != '' %}<a href="{{ project.url | relative_url }}">{{ project.title | escape }}</a>{% else %}{{ project.title | escape }}{% endif %}</strong>
+      <p>{{ project.description | escape }}</p>
+      {% if project.url and project.url != '' %}<a href="{{ project.url | relative_url }}">[Project]</a>{% endif %}
+    </div>
+  </div>
+</div>
+{% endfor %}

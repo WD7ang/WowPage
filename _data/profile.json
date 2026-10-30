@@ -1,0 +1,10 @@
+{
+  "headline": "Researcher · Your Institution",
+  "intro_html": "<p>Hi! I am a researcher at <strong>Your Institution</strong>.</p><p>My work explores <strong>your research area</strong>. I am interested in building useful systems, asking good questions, and sharing what I learn.</p><p>Use this space to introduce your background, research direction, and collaboration interests. Feel free to get in touch.</p>",
+  "interests": [
+    "Research Area One",
+    "Research Area Two",
+    "Research Area Three"
+  ],
+  "cv_pdf": ""
+}

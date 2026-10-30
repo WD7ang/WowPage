@@ -1,0 +1,63 @@
+[
+  {
+    "id": "example-paper-one",
+    "title": "Example Paper: A Clear Title for Your Research",
+    "title_url": "https://example.com",
+    "authors_html": "<strong>Your Name</strong>, First Collaborator, Second Collaborator",
+    "venue": "Example Conference, 2026",
+    "year": 2026,
+    "featured": true,
+    "image": "/images/placeholders/publication.svg",
+    "image_alt": "Placeholder research overview",
+    "description": "Summarize the research problem, your approach, and the main finding. Replace this example with your own work.",
+    "notes": "",
+    "links": [
+      {
+        "label": "Paper",
+        "url": "https://example.com"
+      },
+      {
+        "label": "Code",
+        "url": "https://example.com"
+      }
+    ]
+  },
+  {
+    "id": "example-paper-two",
+    "title": "Another Research Project: Methods and Evaluation",
+    "title_url": "https://example.com",
+    "authors_html": "First Collaborator, <strong>Your Name</strong>, Second Collaborator",
+    "venue": "Example Journal, 2025",
+    "year": 2025,
+    "featured": true,
+    "image": "/images/placeholders/publication.svg",
+    "image_alt": "Placeholder method illustration",
+    "description": "Explain what makes this project interesting in two or three lines. Add a figure, resource links, and the publication venue.",
+    "notes": "",
+    "links": [
+      {
+        "label": "Paper",
+        "url": "https://example.com"
+      }
+    ]
+  },
+  {
+    "id": "example-paper-three",
+    "title": "A Collaborative Study in Your Research Area",
+    "title_url": "https://example.com",
+    "authors_html": "First Collaborator, Second Collaborator, <strong>Your Name</strong>",
+    "venue": "Example Workshop, 2024",
+    "year": 2024,
+    "featured": false,
+    "image": "/images/placeholders/publication.svg",
+    "image_alt": "Placeholder study illustration",
+    "description": "This item appears in the full list and CV. Set featured to true to also show it as a homepage card.",
+    "notes": "",
+    "links": [
+      {
+        "label": "Paper",
+        "url": "https://example.com"
+      }
+    ]
+  }
+]

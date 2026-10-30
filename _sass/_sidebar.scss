@@ -247,8 +247,7 @@
     white-space: nowrap;
   }
 
-  a,
-  span {
+  a {
     display: grid;
     grid-template-columns: 1.85em 1fr;
     column-gap: 0.52em;
@@ -260,16 +259,13 @@
     color: inherit;
     font-size: 1.1em;
     text-decoration: none;
-  }
 
-  a {
     &:hover {
       text-decoration: underline;
     }
   }
 
   li > a > i,
-  li > span > i,
   li > a > .icon {
     width: 1.85em;
     height: 1.85em;

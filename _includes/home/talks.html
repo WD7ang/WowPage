@@ -1,0 +1,6 @@
+<h2 id="talks">Talks</h2>
+<ul>
+  {% for talk in site.data.talks %}
+  <li><span class="news-date">{{ talk.date | escape }}</span> {% if talk.url and talk.url != '' %}<a href="{{ talk.url | relative_url }}">{{ talk.title | escape }}</a>{% else %}{{ talk.title | escape }}{% endif %} · {{ talk.details | escape }}</li>
+  {% endfor %}
+</ul>

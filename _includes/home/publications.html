@@ -1,0 +1,26 @@
+<h2 id="publications">Publications</h2>
+<div class="pub-button-container" role="group" aria-label="Publication view" data-publication-controls hidden>
+  <button class="pub-button active" type="button" data-publication-target="core" aria-pressed="true" aria-controls="core-publications">Core Publications</button>
+  <button class="pub-button" type="button" data-publication-target="list" aria-pressed="false" aria-controls="full-publications">Full Publications List</button>
+</div>
+<p class="publication-legend">* Equal contribution · &dagger; Corresponding author · &Dagger; Project leader</p>
+<div id="core-publications" class="publication-view" data-publication-view="core">
+  {% assign featured_publications = site.data.publications | where: 'featured', true %}
+  {% for publication in featured_publications %}
+    {% include home/publication-card.html publication=publication %}
+  {% endfor %}
+</div>
+<div id="full-publications" class="publication-view" data-publication-view="list">
+  <ul class="full-publication-list" role="list">
+    {% for publication in site.data.publications %}
+    <li class="pub-list-row">
+      <span class="pub-list-venue">{{ publication.venue | escape }}</span>
+      <div class="pub-list-details">
+        {% if publication.title_url and publication.title_url != '' %}<a class="pub-list-title" href="{{ publication.title_url | relative_url }}">{{ publication.title | escape }}</a>{% else %}<span class="pub-list-title">{{ publication.title | escape }}</span>{% endif %}
+        <span class="pub-list-authors">{{ publication.authors_html }}</span>
+        <span class="pub-list-links">{% for link in publication.links %}<a href="{{ link.url | relative_url }}">[{{ link.label | escape }}]</a>{% endfor %}</span>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
