@@ -247,9 +247,10 @@
     white-space: nowrap;
   }
 
-  a {
+  a,
+  li > span {
     display: grid;
-    grid-template-columns: 1.85em 1fr;
+    grid-template-columns: 1.85em minmax(0, 1fr);
     column-gap: 0.52em;
     align-items: center;
     margin-bottom: 6px;
@@ -259,15 +260,17 @@
     color: inherit;
     font-size: 1.1em;
     text-decoration: none;
+  }
 
-    &:hover {
-      text-decoration: underline;
-    }
+  a:hover {
+    text-decoration: underline;
   }
 
   li > a > i,
-  li > a > .icon {
-    width: 1.85em;
+  li > a > .icon,
+  li > span > i,
+  li > span > .icon {
+    width: 100%;
     height: 1.85em;
     display: inline-flex;
     align-items: center;

@@ -10,7 +10,6 @@
     "image": "/images/placeholders/publication.svg",
     "image_alt": "Placeholder research overview",
     "description": "Summarize the research problem, your approach, and the main finding. Replace this example with your own work.",
-    "notes": "",
     "links": [
       {
         "label": "Paper",
@@ -33,7 +32,6 @@
     "image": "/images/placeholders/publication.svg",
     "image_alt": "Placeholder method illustration",
     "description": "Explain what makes this project interesting in two or three lines. Add a figure, resource links, and the publication venue.",
-    "notes": "",
     "links": [
       {
         "label": "Paper",
@@ -51,8 +49,7 @@
     "featured": false,
     "image": "/images/placeholders/publication.svg",
     "image_alt": "Placeholder study illustration",
-    "description": "This item appears in the full list and CV. Set featured to true to also show it as a homepage card.",
-    "notes": "",
+    "description": "This item appears in the full list. Set featured to true to also show it as a homepage card.",
     "links": [
       {
         "label": "Paper",

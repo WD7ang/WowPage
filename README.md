@@ -1,15 +1,15 @@
 # WowPage · v2
 
-一个简洁、可直接部署到 GitHub Pages 的学术主页模板。保留蓝灰色主页、论文卡片与完整列表切换、双语博客书架、可打印 CV 和可选音乐播放器。所有人物、经历、论文、联系方式及配图均为占位示例。
+一个简洁、可直接部署到 GitHub Pages 的学术主页模板。保留蓝灰色主页、论文卡片与完整列表切换、双语博客书架和可选音乐播放器。人物、经历、论文、联系方式及配图使用占位内容；博客初始为空，CV 由使用者自行制作。
 
 ## 版本
 
 | 分支 | 内容 |
 | --- | --- |
-| [`main`](https://github.com/WD7ang/WowPage/tree/main) / [`v2`](https://github.com/WD7ang/WowPage/tree/v2) | 当前新版模板；首页与 CV 共用数据 |
+| [`main`](https://github.com/WD7ang/WowPage/tree/main) / [`v2`](https://github.com/WD7ang/WowPage/tree/v2) | 当前新版模板；内容集中维护，博客留空，无内置 CV |
 | [`v1`](https://github.com/WD7ang/WowPage/tree/v1) | 整理后的经典 WowPage；保留原版布局和趣味示例 |
 
-当前稳定标签为 `v1.0.0` 和 `v2.0.1`（包含 CI 配置修正）；首次 v2 快照为 `v2.0.0`。这两个版本均为独立、可运行的 Jekyll 项目，使用时只需要其中一个分支。
+当前版本为 `v2.0.2`；经典版保留在 `v1` 分支及 `v1.0.0` 标签。两版均为独立、可运行的 Jekyll 项目，使用时只需要其中一个分支。历史变更见 [CHANGELOG](CHANGELOG.md)。
 
 ## 本地启动
 
@@ -29,29 +29,29 @@ bundle exec jekyll serve
 | 想修改的内容 | 文件 |
 | --- | --- |
 | 姓名、头像、邮件、社交账号、站点地址 | `_config.yml` |
-| 自我介绍、研究标签、CV 标题、可选 PDF | `_data/profile.json` |
+| 自我介绍、研究标签 | `_data/profile.json` |
 | 导航菜单 | `_data/navigation.yml` |
 | 新闻 | `_data/news.json` |
 | 教育、经历 | `_data/education.json`、`_data/experience.json` |
 | 论文、项目 | `_data/publications.json`、`_data/projects.json` |
 | 奖项、报告、服务 | `_data/awards.json`、`_data/talks.json`、`_data/services.json` |
-| 技术博客 / 随笔 | `_posts/`，示例文章可替换或删除 |
+| 技术博客 / 随笔 | `_posts/`，初始为空，按需添加自己的文章 |
 | 可选歌单 | `_data/music.json`；空数组时隐藏播放器 |
 | 图片 | `images/`；通用配图位于 `images/placeholders/` |
 
-首页与 CV 的教育、经历、论文、项目、奖项和服务共用上述数据。论文的 `featured: true` 控制是否显示为首页卡片；完整列表和 CV 展示全部论文。
+首页的教育、经历、论文、项目、奖项和服务均从上述数据文件读取。论文的 `featured: true` 控制是否显示为首页卡片；完整列表展示全部论文。需要 CV 入口时，在导航中添加自己制作的 CV 外链，详见自定义指南。
 
 ## 目录分工
 
 ```text
 _config.yml          站点身份与 Jekyll 设置
 _data/               可编辑内容，一处维护
-_pages/              首页、CV、博客入口、404、站点地图
-_posts/              博客文章
+_pages/              首页、博客入口、404、站点地图
+_posts/              自己的博客文章（初始为空）
 _includes/home/      首页各栏目组件
-_includes/           主题、书架、音乐、CV 等可复用组件
+_includes/           主题、书架、音乐等可复用组件
 _layouts/            页面外框
-assets/css/          主页、书架、音乐、CV 等样式
+assets/css/          主页、文章、书架、音乐等样式
 assets/js/           按功能拆分的交互脚本
 _sass/               AcademicPages 基础主题及第三方依赖
 images/              通用素材与占位图
@@ -80,7 +80,7 @@ CI 会分别检查根路径与 `/WowPage` 子路径。若要修改基础主题 J
 
 ## English quick start
 
-WowPage v2 is a Jekyll academic homepage with shared homepage/CV data, publication views, a bilingual bookshelf blog, and optional music. Edit `_config.yml` for identity and `_data/` for content. Run `bundle install` and `bundle exec jekyll serve`. Set `url` and `baseurl` before enabling GitHub Pages. All sample content is fictional; the original personal photos, QR codes, papers, CV PDF, metrics, and playlist are excluded.
+WowPage v2 is a Jekyll academic homepage with editable content data, publication views, a bilingual bookshelf, and optional music. The blog starts empty and no CV is bundled; add your own posts or an external CV link when ready. Edit `_config.yml` for identity and `_data/` for content. Run `bundle install` and `bundle exec jekyll serve`. Set `url` and `baseurl` before enabling GitHub Pages. Placeholder profile and research content is fictional; personal photos, QR codes, papers, metrics, and playlists are excluded.
 
 ## Credits & license
 

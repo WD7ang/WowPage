@@ -23,7 +23,6 @@ p { margin-bottom: 15px; }
 .primary-navigation { display: flex; gap: 23px; align-items: center; font-size: 13px; }
 .primary-navigation a { color: #536071; padding: 23px 0; white-space: nowrap; }
 .primary-navigation a:hover, .primary-navigation a[aria-current] { color: var(--accent); }
-.primary-navigation .nav-cv { border: 1px solid #cbd5df; border-radius: 5px; padding: 4px 13px; color: var(--accent); }
 .menu-toggle { background: none; border: 1px solid var(--line); padding: 5px 10px; color: var(--ink); border-radius: 4px; }
 .site-main { width: min(1040px, calc(100% - 64px)); margin: 0 auto; padding: 58px 0 64px; }
 .profile-hero { display: grid; grid-template-columns: minmax(0,1fr) 220px; gap: 76px; align-items: center; margin-bottom: 49px; }
@@ -82,8 +81,6 @@ summary { cursor: pointer; color: var(--accent); font-size: 12px; width: fit-con
 .detail-list { padding-left: 18px; margin: 0; font-size: 14px; }
 .detail-list li { margin-bottom: 9px; padding-left: 4px; }
 .detail-list time { color: var(--muted); font-size: 12px; margin-right: 13px; }
-.cv-callout { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-.cv-callout p { color: var(--muted); font-size: 14px; margin: 0; }
 .button-row { display: flex; gap: 10px; flex-wrap: wrap; }
 .button { display: inline-flex; justify-content: center; align-items: center; gap: 8px; border: 1px solid #cbd5df; border-radius: 4px; padding: 8px 15px; font-size: 12px; font-weight: 550; color: var(--accent); background: white; white-space: nowrap; }
 .button:hover { background: var(--soft); text-decoration: none; }
@@ -112,7 +109,6 @@ summary { cursor: pointer; color: var(--accent); font-size: 12px; width: fit-con
   .nav-shell { flex-wrap: wrap; min-height: 64px; padding-top: 12px; padding-bottom: 12px; }
   .primary-navigation { width: 100%; gap: 0; flex-wrap: wrap; padding: 8px 0 0; }
   .primary-navigation a { padding: 8px 13px 8px 0; margin-right: 16px; }
-  .primary-navigation .nav-cv { padding: 3px 13px; }
   .js .primary-navigation:not(.is-open) { display: none; }
   .site-main { padding-top: 38px; }
   .profile-hero { grid-template-columns: minmax(0,1fr) 175px; gap: 28px; }
@@ -149,7 +145,6 @@ summary { cursor: pointer; color: var(--accent); font-size: 12px; width: fit-con
   .project-image { width: 100%; max-height: 180px; object-fit: cover; }
   .detail-list { font-size: 13px; }
   .detail-list time { display: block; }
-  .cv-callout { flex-direction: column; align-items: flex-start; gap: 15px; }
   .site-footer { margin: 0 20px; flex-wrap: wrap; font-size: 10px; }
   .site-footer > span:first-child { width: 100%; }
 }

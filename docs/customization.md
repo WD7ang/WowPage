@@ -2,7 +2,7 @@
 
 ## 身份与路径
 
-`_config.yml` 顶层 `name` 使用 YAML anchor 与 `author.name` 共用，页面、书封和 CV 自动读取它。简介、描述和论文作者列表是独立内容，需要一并替换。可选社交字段留空（不填值）即可隐藏。头像路径相对 `images/`，例如 `avatar: profile/avatar.jpg`。
+`_config.yml` 顶层 `name` 使用 YAML anchor 与 `author.name` 共用，页面和书封自动读取它。简介、描述和论文作者列表是独立内容，需要一并替换。可选社交字段留空（不填值）即可隐藏。头像路径相对 `images/`，例如 `avatar: profile/avatar.jpg`。
 
 默认 `url`、`baseurl` 和 `repository` 不填值，由 GitHub Pages 自动推断。本地根路径预览也可直接运行。若部署到其他服务或需固定路径，填写以下配置；显式的 `baseurl: ""` 表示根路径：
 
@@ -14,12 +14,12 @@ repository: "your-username/your-repository"
 
 JSON 中本地图片、文件、文章链接使用以 `/` 开头的站点路径，组件会加上 `baseurl`。外链填写完整 `https://...`。示例外链使用 `https://example.com`，应改为你的真实资源或移除对应链接项。
 
-## 首页与 CV 共用内容
+## 首页内容
 
 - `education.json`：学校、学位、起止日期、说明。
-- `experience.json`：机构、职位、起止日期；`description` 用于首页，`highlights` 用于 CV。
+- `experience.json`：机构、职位、起止日期、简短的 `description`。
 - `publications.json`：题名、作者、venue、图片、摘要、资源链接；`featured` 控制首页卡片。
-- `projects.json`、`awards.json`、`services.json`：首页与 CV 使用同一组记录。
+- `projects.json`、`awards.json`、`services.json`：项目、奖项与服务。
 - 日期使用 `MM/YYYY` 或 `Present`，新闻等自由显示日期使用普通字符串。
 
 带 `_html` 的字段与新闻 `text` 可包含你自行编写的 HTML。其余文字字段按普通文本显示。数据按文件内顺序展示，通常将最新记录放在最前。
@@ -48,22 +48,58 @@ JSON 中本地图片、文件、文章链接使用以 `/` 开头的站点路径�
 
 ## 博客书架
 
-文章存放在 `_posts/YYYY-MM-DD-title.md`。`categories: [tech]` 进入技术书架，`categories: [essays]` 进入随笔书架。使用任意文章数量，包括零篇。
+`_posts/` 初始为空，技术与随笔书架会显示空状态。需要发表时，创建 `_posts/YYYY-MM-DD-title.md`。`categories: [tech]` 进入技术书架，`categories: [essays]` 进入随笔书架。例如：
 
-```yaml
+```markdown
 ---
 title: "A research note"
 date: 2026-01-01
 categories: [tech]
 layout: academic-post
 ---
+
+在这里写下自己的文章正文。
 ```
 
-双语随笔参考现有 `layout: essay` 示例，保留 `essay-zh` / `essay-en` 两个锚点。需公式渲染时设置 `math: true`。删除示例文章后书架自动展示空状态。
+双语随笔使用 `layout: essay`，文章前置信息与正文结构如下。需公式渲染时设置 `math: true`。
 
-## CV / PDF
+```markdown
+---
+title: "你的随笔标题"
+title_en: "Your Essay Title"
+date: 2026-01-01
+categories: [essays]
+layout: essay
+lang: zh-CN
+extra_css: /assets/css/books.css
+body_class: essay-page
+---
 
-访问 `/cv/`，点击 **Print / Save as PDF**。浏览器打印选 A4、100% 缩放并关闭浏览器页眉页脚。下载链接默认隐藏；将自己的 PDF 放入例如 `files/cv.pdf`，并在 `_data/profile.json` 配置 `"cv_pdf": "/files/cv.pdf"` 后显示。PDF 是手动导出的文件，修改内容后需重新导出。
+<section class="essay-language" id="essay-zh" lang="zh-CN" markdown="1">
+
+中文正文。
+
+</section>
+
+<section class="essay-language" id="essay-en" lang="en" markdown="1">
+
+Your English text.
+
+</section>
+```
+
+这些代码仅作为文档说明，不会生成文章；书架始终只展示你放入 `_posts/` 的内容。
+
+## 添加自己的 CV 链接
+
+模板不提供 CV 页面、PDF 或简历内容。完成自己的 CV 并获得公开链接后，在 `_data/navigation.yml` 的 `main` 列表末尾添加：
+
+```yaml
+  - title: "CV"
+    url: "https://example.com/your-cv"
+```
+
+将示例 URL 替换为自己的 CV 链接，保留其他导航项即可。
 
 ## 音乐（可选）
 
@@ -90,7 +126,7 @@ layout: academic-post
 - `classic-home.css`：蓝灰主题、背景、布局与移动端调整。
 - `books.css` / `books.js`：博客书架。
 - `music-player.css` / `music-player.js`：可选播放器。
-- `cv.css`：CV 与打印；`academic.css`：文章页面。
+- `academic.css`：文章页面；`_includes/date.html`：首页日期格式。
 - `_sass/vendor/`、`assets/js/plugins/`：主题依赖，保留上游授权信息。
 
 `images/sky.jpg` 是保留的通用天空背景。可替换此文件，或修改 `classic-home.css` 中 `body::before` 的背景与 `--home-background-opacity`。

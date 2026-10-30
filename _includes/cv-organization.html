@@ -1,1 +1,0 @@
-{% if include.item.url and include.item.url != '' %}<a class="cv-organization" href="{{ include.item.url | relative_url | escape }}">{{ include.item.organization | escape }}</a>{% else %}<span class="cv-organization">{{ include.item.organization | escape }}</span>{% endif %}

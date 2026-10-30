@@ -6,7 +6,7 @@
     <div class="experience-info">
       <div class="experience-header">
         <strong>{% if item.url and item.url != '' %}<a href="{{ item.url | relative_url }}">{{ item.organization | escape }}</a>{% else %}{{ item.organization | escape }}{% endif %}</strong>
-        <span class="experience-date">{% include cv-date.html value=item.date_start %} – {% include cv-date.html value=item.date_end %}</span>
+        <span class="experience-date">{% include date.html value=item.date_start %} – {% include date.html value=item.date_end %}</span>
       </div>
       <div class="experience-role">{{ item.role | escape }}</div>
       <div class="experience-description">{{ item.description | escape }}</div>
