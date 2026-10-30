@@ -2,7 +2,7 @@
 
 ## 身份与路径
 
-`_config.yml` 顶层 `name` 使用 YAML anchor 与 `author.name` 共用，页面和书封自动读取它。简介、描述和论文作者列表是独立内容，需要一并替换。可选社交字段留空（不填值）即可隐藏。头像路径相对 `images/`，例如 `avatar: profile/avatar.jpg`。
+`_config.yml` 顶层 `name` 使用 YAML anchor 与 `author.name` 共用，页面自动读取它。简介、描述和论文作者列表是独立内容，需要一并替换。可选社交字段留空（不填值）即可隐藏。头像路径相对 `images/`，例如 `avatar: profile/avatar.jpg`。
 
 默认 `url`、`baseurl` 和 `repository` 不填值，由 GitHub Pages 自动推断。本地根路径预览也可直接运行。若部署到其他服务或需固定路径，填写以下配置；显式的 `baseurl: ""` 表示根路径：
 
@@ -46,51 +46,11 @@ JSON 中本地图片、文件、文章链接使用以 `/` 开头的站点路径�
 
 `title_url` 可省略，`links` 可为空数组。仅需完整列表时，将所有论文的 `featured` 设为 false；页面会默认打开完整列表。禁用 JavaScript 时两种展示均可阅读。
 
-## 博客书架
+## Blog 占位框
 
-保留两本书的封面与翻书交互，不附带个人寄语或书封介绍文字。
+首页保留 Blog 标题与导航，标题下只有三个无内容、无链接的占位框。它们不展示文章，也没有点击交互。
 
-`_posts/` 初始为空，技术与随笔书架会显示空状态。需要发表时，创建 `_posts/YYYY-MM-DD-title.md`。`categories: [tech]` 进入技术书架，`categories: [essays]` 进入随笔书架。例如：
-
-```markdown
----
-title: "A research note"
-date: 2026-01-01
-categories: [tech]
-layout: academic-post
----
-
-在这里写下自己的文章正文。
-```
-
-双语随笔使用 `layout: essay`，文章前置信息与正文结构如下。需公式渲染时设置 `math: true`。
-
-```markdown
----
-title: "你的随笔标题"
-title_en: "Your Essay Title"
-date: 2026-01-01
-categories: [essays]
-layout: essay
-lang: zh-CN
-extra_css: /assets/css/books.css
-body_class: essay-page
----
-
-<section class="essay-language" id="essay-zh" lang="zh-CN" markdown="1">
-
-中文正文。
-
-</section>
-
-<section class="essay-language" id="essay-en" lang="en" markdown="1">
-
-Your English text.
-
-</section>
-```
-
-这些代码仅作为文档说明，不会生成文章；书架始终只展示你放入 `_posts/` 的内容。
+编辑 `_includes/home/blog.html` 可调整占位框结构和数量；对应外观与响应式布局在 `assets/css/home-sections.css`。如需填入自己的内容和链接，直接修改该组件。通用文章布局仍可使用，但首页占位框不会自动读取文章。
 
 ## 添加自己的 CV 链接
 
@@ -128,7 +88,7 @@ Your English text.
 - `classic-home.css`：蓝灰主题、背景、布局与移动端调整。
 - `_includes/home/dated-list.html`：Awards、Talks、Services 共用的日期列表；统一样式在 `classic-home.css`。
 - `assets/fonts/permanent-marker/`：欢迎标题的本地手写字体及授权，无需请求外部字体服务。
-- `books.css` / `books.js`：博客书架。
+- `_includes/home/blog.html`：三个空 Blog 占位框；样式在 `assets/css/home-sections.css`。
 - `music-player.css` / `music-player.js`：可选播放器。
 - `academic.css`：文章页面；`_includes/date.html`：首页日期格式。
 - `_sass/vendor/`、`assets/js/plugins/`：主题依赖，保留上游授权信息。

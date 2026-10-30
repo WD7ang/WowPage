@@ -33,6 +33,28 @@
   scroll-margin-top: 80px;
 }
 
+/* Empty Blog placeholders */
+.home-blog {
+  margin-top: 38px;
+}
+.blog-placeholders {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 16px 0 32px;
+}
+.blog-placeholder {
+  min-height: 144px;
+  border: 1px dashed rgba(49, 93, 128, 0.4);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.45);
+}
+@media (max-width: 720px) {
+  .blog-placeholders {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* News */
 .news-box {
   max-height: 220px;
