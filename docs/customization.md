@@ -4,6 +4,17 @@
 
 `_config.yml` 顶层 `name` 使用 YAML anchor 与 `author.name` 共用，页面自动读取它。简介、描述和论文作者列表是独立内容，需要一并替换。可选社交字段留空（不填值）即可隐藏。头像路径相对 `images/`，例如 `avatar: profile/avatar.jpg`。
 
+侧栏已移除 Institution，并提供 Twitter、Google Scholar 和 GitHub 链接。在现有 `author` 配置中替换以下占位值：
+
+```yaml
+author:
+  twitter: "your_username"
+  googlescholar: "https://scholar.google.com/citations?user=YOUR_SCHOLAR_ID"
+  github: "your-github-username"
+```
+
+`author.twitter` 和 `author.github` 只填用户名，不填完整网址；`author.googlescholar` 填完整个人资料 URL。将任一字段留空，例如 `twitter:`，即可隐藏对应链接。修改这些字段时保留 `author` 下已有的姓名、头像等配置。
+
 默认 `url`、`baseurl` 和 `repository` 不填值，由 GitHub Pages 自动推断。本地根路径预览也可直接运行。若部署到其他服务或需固定路径，填写以下配置；显式的 `baseurl: ""` 表示根路径：
 
 ```yaml

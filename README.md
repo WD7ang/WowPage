@@ -9,7 +9,7 @@
 | [`main`](https://github.com/WD7ang/WowPage/tree/main) / [`v2`](https://github.com/WD7ang/WowPage/tree/v2) | 当前新版模板；内容集中维护，Blog 使用三个空占位框，无内置 CV |
 | [`v1`](https://github.com/WD7ang/WowPage/tree/v1) | 整理后的经典 WowPage；保留原版布局和趣味示例 |
 
-当前版本为 `v2.0.7`；经典版保留在 `v1` 分支及 `v1.0.0` 标签。两版均为独立、可运行的 Jekyll 项目，使用时只需要其中一个分支。历史变更见 [CHANGELOG](CHANGELOG.md)。
+当前版本为 `v2.0.8`；经典版保留在 `v1` 分支及 `v1.0.0` 标签。两版均为独立、可运行的 Jekyll 项目，使用时只需要其中一个分支。历史变更见 [CHANGELOG](CHANGELOG.md)。
 
 ## 本地启动
 
@@ -38,6 +38,8 @@ bundle exec jekyll serve
 | Blog 占位框 | `_includes/home/blog.html`；样式在 `assets/css/home-sections.css` |
 | 可选歌单 | `_data/music.json`；空数组时隐藏播放器 |
 | 图片 | `images/`；通用配图位于 `images/placeholders/` |
+
+侧栏显示 Twitter、Google Scholar 和 GitHub 占位链接，已移除 Institution。`author.twitter` 与 `author.github` 填用户名，`author.googlescholar` 填完整个人资料 URL；将字段留空即可隐藏对应链接，具体占位值见自定义指南。
 
 首页的教育、经历、论文、项目、奖项和服务均从上述数据文件读取。论文的 `featured: true` 控制是否显示为首页卡片；完整列表展示全部论文。需要 CV 入口时，在导航中添加自己制作的 CV 外链，详见自定义指南。
 

@@ -1,5 +1,10 @@
 # Changelog
 
+## v2.0.8
+
+- 移除侧栏 Institution，增加 Twitter、Google Scholar 和 GitHub 占位链接。
+- 文档说明 Twitter / GitHub 用户名、Google Scholar 完整 URL 的配置方式，以及空值隐藏规则。
+
 ## v2.0.7
 
 - Blog 保留标题与导航，内容改为三个无内容、无链接的占位框。

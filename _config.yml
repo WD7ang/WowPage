@@ -13,12 +13,12 @@ author:
   avatar: placeholders/avatar.svg # relative to images/
   bio: "Researcher · Your research area"
   location: "City, Country"
-  employer: "Your Institution"
   email: "name@example.com"
   uri: # full URL
   pronouns:
-  github: # username
-  googlescholar: # full profile URL
+  twitter: "your_username" # replace with your username
+  googlescholar: "https://scholar.google.com/citations?user=YOUR_SCHOLAR_ID" # full profile URL
+  github: "your-github-username" # replace with your username
   orcid:
   linkedin: # username
   WeChat: # image filename relative to images/
