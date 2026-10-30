@@ -8,6 +8,12 @@ WowPage 是一个基于 Jekyll 的学术主页模板，可直接部署到 GitHub
 
 [在线预览](https://wd7ang.github.io/WowPage/) · [自定义指南](docs/customization.md) · [更新日志](CHANGELOG.md)
 
+## 展示案例
+
+| 例图 | 链接 |
+| --- | --- |
+| <img src="docs/showcase/weidong-tang.png" alt="汤维栋的个人主页预览" width="520"> | **汤维栋 · Weidong Tang**<br>[https://wd7ang.github.io/](https://wd7ang.github.io/) |
+
 ## 版本
 
 | 分支 | 版本 | 内容 |

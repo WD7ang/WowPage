@@ -8,6 +8,12 @@ Publications support featured cards and a full list. Blog contains three empty b
 
 [Live demo](https://wd7ang.github.io/WowPage/) · [Customization guide (中文)](docs/customization.md) · [Changelog](CHANGELOG.md)
 
+## Showcase
+
+| Preview | Link |
+| --- | --- |
+| <img src="docs/showcase/weidong-tang.png" alt="Preview of Weidong Tang's homepage" width="520"> | **Weidong Tang**<br>[https://wd7ang.github.io/](https://wd7ang.github.io/) |
+
 ## Versions
 
 | Branch | Version | Contents |
