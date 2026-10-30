@@ -189,6 +189,8 @@
   display: none;
   position: absolute;
   right: 0;
+  width: max-content;
+  max-width: calc(100vw - 32px);
   margin-top: 15px;
   padding: 10px;
   list-style-type: none;
@@ -202,6 +204,8 @@
   @include breakpoint($large) {
     display: block;
     position: relative;
+    width: auto;
+    max-width: none;
     margin: 0;
     padding: 0;
     border: 0;

@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.0.9
+
+- 按链接内容计算手机 Follow 菜单宽度，避免 Google Scholar 等较长名称溢出屏幕。
+
 ## v2.0.8
 
 - 移除侧栏 Institution，增加 Twitter、Google Scholar 和 GitHub 占位链接。
