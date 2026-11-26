@@ -1,7 +1,8 @@
 [
   {
-    "title": "Example Research Award",
-    "date": "2025",
-    "details": "Your Institution · Brief description of the award"
+    "title": "Your Award Name",
+    "date": "20XX",
+    "details": "Your Awarding Institution · Award category",
+    "logo": "/images/placeholders/institution.svg"
   }
 ]

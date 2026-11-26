@@ -1,26 +1,40 @@
-<h2 id="publications">Publications</h2>
-<div class="pub-button-container" role="group" aria-label="Publication view" data-publication-controls hidden>
-  <button class="pub-button active" type="button" data-publication-target="core" aria-pressed="true" aria-controls="core-publications">Core Publications</button>
-  <button class="pub-button" type="button" data-publication-target="list" aria-pressed="false" aria-controls="full-publications">Full Publications List</button>
-</div>
-<p class="publication-legend">* Equal contribution · &dagger; Corresponding author · &Dagger; Project leader</p>
-<div id="core-publications" class="publication-view" data-publication-view="core">
-  {% assign featured_publications = site.data.publications | where: 'featured', true %}
-  {% for publication in featured_publications %}
-    {% include home/publication-card.html publication=publication %}
-  {% endfor %}
-</div>
-<div id="full-publications" class="publication-view" data-publication-view="list">
-  <ul class="full-publication-list" role="list">
-    {% for publication in site.data.publications %}
-    <li class="pub-list-row">
-      <span class="pub-list-venue">{{ publication.venue | escape }}</span>
-      <div class="pub-list-details">
-        {% if publication.title_url and publication.title_url != '' %}<a class="pub-list-title" href="{{ publication.title_url | relative_url }}">{{ publication.title | escape }}</a>{% else %}<span class="pub-list-title">{{ publication.title | escape }}</span>{% endif %}
-        <span class="pub-list-authors">{{ publication.authors_html }}</span>
-        <span class="pub-list-links">{% for link in publication.links %}<a href="{{ link.url | relative_url }}">[{{ link.label | escape }}]</a>{% endfor %}</span>
+<section class="home-publications" aria-labelledby="publications">
+  <h2 id="publications">Publications</h2>
+  {% assign featured_papers = site.data.publications | where: 'featured', true %}
+  {% assign core_papers = site.data.publications | where_exp: 'paper', 'paper.core_venue' | concat: featured_papers | uniq %}
+  {% if core_papers.size > 0 %}
+  <section class="accepted-papers" aria-labelledby="core-papers-heading">
+    <div class="accepted-papers-heading">
+      <h3 id="core-papers-heading">Core Papers</h3>
+      <span>{{ core_papers.size }} {% if core_papers.size == 1 %}paper{% else %}papers{% endif %}</span>
+    </div>
+    <dl class="accepted-papers-grid">
+      {% assign venues = core_papers | group_by_exp: 'paper', 'paper.core_venue | default: paper.venue' %}
+      {% for venue in venues %}
+      <div class="accepted-venue">
+        <dt>{{ venue.name | escape }} × {{ venue.size }}</dt>
+        <dd>
+          {%- for paper in venue.items -%}
+          {% assign paper_id = paper.id | default: paper.title | slugify %}
+          <a href="#paper-{{ paper_id }}">{{ paper.short_title | default: paper.title | escape }}</a>{% unless forloop.last %}, {% endunless %}
+          {%- endfor -%}
+        </dd>
       </div>
-    </li>
+      {% endfor %}
+    </dl>
+  </section>
+  {% endif %}
+
+  {% if site.data.publications.size > 0 %}
+  <p class="publication-author-key">* Equal contribution · † Corresponding author · ‡ Project leader</p>
+  {% assign categories = site.data.publications | group_by_exp: 'paper', 'paper.research_category | default: "Research papers"' %}
+  {% for category in categories %}
+  <section class="publication-category" aria-labelledby="publication-category-{{ forloop.index }}">
+    <h3 class="publication-category-heading" id="publication-category-{{ forloop.index }}">{{ category.name | escape }}</h3>
+    {% for paper in category.items %}
+    {% include home/publication-card.html publication=paper %}
     {% endfor %}
-  </ul>
-</div>
+  </section>
+  {% endfor %}
+  {% endif %}
+</section>

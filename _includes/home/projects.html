@@ -1,13 +1,26 @@
-<h2 id="projects">Projects</h2>
-{% for project in site.data.projects %}
-<div class="project-card">
-  <div class="card-content">
-    {% if project.image and project.image != '' %}<div class="pub-media-rotator"><img src="{{ project.image | relative_url }}" alt="{{ project.title | escape }}" loading="lazy" width="640" height="360"></div>{% endif %}
-    <div class="card-description">
-      <strong>{% if project.url and project.url != '' %}<a href="{{ project.url | relative_url }}">{{ project.title | escape }}</a>{% else %}{{ project.title | escape }}{% endif %}</strong>
-      <p>{{ project.description | escape }}</p>
-      {% if project.url and project.url != '' %}<a href="{{ project.url | relative_url }}">[Project]</a>{% endif %}
+<section aria-labelledby="projects">
+  <h2 id="projects">Projects</h2>
+  {% for project in site.data.projects %}
+  <article class="project-card{% if project.image == nil or project.image == '' %} project-card--text{% endif %}" aria-labelledby="project-{{ forloop.index }}">
+    <div>
+      {% if project.image and project.image != '' %}
+      <div class="pub-media-rotator">
+        <img src="{{ project.image | relative_url | escape }}" alt="{{ project.image_alt | default: project.title | escape }}" width="640" height="360" loading="lazy" decoding="async">
+      </div>
+      {% endif %}
+      <div class="pub-card-body">
+        <h3 class="pub-card-title" id="project-{{ forloop.index }}">{{ project.title | escape }}</h3>
+        {% if project.authors_html %}<p class="pub-authors">{{ project.authors_html }}</p>{% endif %}
+        <p class="pub-description">{{ project.description | escape }}</p>
+        <div class="pub-card-meta">
+          <b class="pub-venue">{{ project.type | default: 'Project' | escape }}</b>
+          <span class="pub-resource-links">
+            {%- if project.url and project.url != '' -%}<a href="{{ project.url | relative_url | escape }}">{{ project.link_label | default: 'Project page' | escape }}</a>{%- endif -%}
+            {%- for link in project.links -%}<a href="{{ link.url | relative_url | escape }}">{{ link.label | escape }}</a>{%- endfor -%}
+          </span>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-{% endfor %}
+  </article>
+  {% endfor %}
+</section>

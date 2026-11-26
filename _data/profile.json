@@ -1,8 +1,28 @@
 {
-  "intro_html": "<p>Hi! I am a researcher at <strong>Your Institution</strong>.</p><p>My work explores <strong>your research area</strong>. I am interested in building useful systems, asking good questions, and sharing what I learn.</p><p>Use this space to introduce your background, research direction, and collaboration interests. Feel free to get in touch.</p>",
-  "interests": [
-    "Research Area One",
-    "Research Area Two",
-    "Research Area Three"
+  "roles": [
+    {
+      "title": "Your Academic Role",
+      "organization": "Your University",
+      "url": "https://example.org/"
+    },
+    {
+      "title": "Your Research Role",
+      "organization": "Your Research Lab",
+      "url": "https://example.org/"
+    }
+  ],
+  "intro_html": "<p>Introduce yourself here. Describe <strong>your research area</strong>, the questions you study, and the methods you use.</p>",
+  "motto": "Your motto or photo caption",
+  "bios": [
+    {
+      "lang": "en",
+      "label": "English",
+      "html": "<p>Write your English biography here. Introduce your background, your current work, and the topics you would like to collaborate on.</p>"
+    },
+    {
+      "lang": "zh-CN",
+      "label": "中文",
+      "html": "<p>在这里填写你的中文介绍，包括学术背景、目前的研究方向，以及希望交流或合作的话题。</p>"
+    }
   ]
 }

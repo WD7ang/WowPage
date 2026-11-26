@@ -1,0 +1,10 @@
+[
+  {
+    "title": "Your Media Coverage Title",
+    "details": "Your Media Outlet · Coverage type",
+    "url": "https://example.org/",
+    "date": "20XX",
+    "logo": "/images/placeholders/institution.svg",
+    "featured": true
+  }
+]

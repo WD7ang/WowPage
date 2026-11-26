@@ -1,82 +1,66 @@
-# 自定义指南
+# WowPage v3 自定义指南
 
-## 身份与路径
+## 站点和个人资料
 
-`_config.yml` 顶层 `name` 使用 YAML anchor 与 `author.name` 共用，页面自动读取它。简介、描述和论文作者列表是独立内容，需要一并替换。可选社交字段留空（不填值）即可隐藏。头像路径相对 `images/`，例如 `avatar: profile/avatar.jpg`。
+在 `_config.yml` 中设置 `title`、`name` 和 `description`。`author.name` 默认与顶层姓名共用一个值，`author.name_zh` 显示在首页姓名旁。将头像放在 `images/` 下，`author.avatar` 填相对该目录的文件名。联系方式留空时，对应入口会隐藏。
 
-侧栏已移除 Institution，并提供 Twitter、Google Scholar 和 GitHub 链接。在现有 `author` 配置中替换以下占位值：
+| 字段 | 填写方式 |
+| --- | --- |
+| `author.email` | 邮箱地址 |
+| `author.github`、`author.twitter` | 用户名 |
+| `author.googlescholar`、`author.XiaoHongShu` | 完整的个人资料 URL |
+| `author.WeChat` | 相对 `images/` 的二维码文件路径 |
 
-```yaml
-author:
-  twitter: "your_username"
-  googlescholar: "https://scholar.google.com/citations?user=YOUR_SCHOLAR_ID"
-  github: "your-github-username"
-```
+在 `_data/profile.json` 中修改 `roles`、`intro_html` 和照片下方的 `motto`。每条 `bios` 记录提供 `lang`、`label`、`html`，分别指定内容语言、切换按钮文字和详细介绍。`_html` 字段、介绍的 `html` 和新闻的 `text` 支持自行编写的 HTML。
 
-`author.twitter` 和 `author.github` 只填用户名，不填完整网址；`author.googlescholar` 填完整个人资料 URL。将任一字段留空，例如 `twitter:`，即可隐藏对应链接。修改这些字段时保留 `author` 下已有的姓名、头像等配置。
-
-默认 `url`、`baseurl` 和 `repository` 不填值，由 GitHub Pages 自动推断。本地根路径预览也可直接运行。若部署到其他服务或需固定路径，填写以下配置；显式的 `baseurl: ""` 表示根路径：
+GitHub Pages 可以自动识别留空的 `url`、`baseurl` 和 `repository`。要手动设置项目站点，可使用下例。个人站点的 `baseurl` 设为 `""`。
 
 ```yaml
 url: "https://your-username.github.io"
-baseurl: "" # 仓库名为 your-username.github.io；项目站点填 /your-repository
+baseurl: "/your-repository"
 repository: "your-username/your-repository"
 ```
 
-JSON 中本地图片、文件、文章链接使用以 `/` 开头的站点路径，组件会加上 `baseurl`。外链填写完整 `https://...`。示例外链使用 `https://example.com`，应改为你的真实资源或移除对应链接项。
+数据文件中的本地图片、文章和文件路径从站点根目录写起，例如 `/images/papers/overview.png`。组件生成链接时会加上 `baseurl`。替换示例记录时，将示例域名改为真实链接，或删去可选的链接字段。
 
-## 首页内容
+## 经历时间线
 
-- `education.json`：学校、学位、起止日期、说明。
-- `experience.json`：机构、职位、起止日期、简短的 `description`。
-- `publications.json`：题名、作者、venue、图片、摘要、资源链接；`featured` 控制首页卡片。
-- `projects.json`、`awards.json`、`services.json`：项目、奖项与服务。
-- 日期使用 `MM/YYYY` 或 `Present`，新闻等自由显示日期使用普通字符串。
+在 `_data/education.json` 为每个学业阶段设置唯一 `id`。标签页显示 `years` 和 `tab_label`，正文显示学校、学位、起止日期及说明。把 `_data/experience.json` 中每条经历的 `education_id` 设为对应阶段的 `id`。省略 `education_id` 的经历会独立列出。记录按数组顺序展示。
 
-带 `_html` 的字段与新闻 `text` 可包含你自行编写的 HTML。其余文字字段按普通文本显示。数据按文件内顺序展示，通常将最新记录放在最前。
+## 论文与项目
 
-保持全部导航锚点存在的方法是只清空不需要的栏目数组。若要完全隐藏一个栏目，从 `_pages/about.md` 删除相应 include，同时从 `_data/navigation.yml` 删除对应导航。
-
-## 论文
+在 `_data/publications.json` 中添加论文。相同 `research_category` 的论文归为一组。`core_venue` 将论文加入页首会议索引，`short_title` 是索引链接的简写。`featured: true` 会显示星标，省略 `core_venue` 时使用 `venue` 建立索引。为每篇论文设置唯一 `id`，以保留可分享的锚点。
 
 ```json
 {
-  "id": "your-paper",
+  "id": "paper-2026",
   "title": "Your Paper Title",
-  "title_url": "https://example.com",
   "authors_html": "<strong>Your Name</strong>, A Collaborator",
-  "venue": "Your Conference, 2026",
-  "year": 2026,
-  "featured": true,
-  "image": "/images/papers/your-paper.png",
-  "image_alt": "Description of your research figure",
-  "description": "One or two sentences about your contribution.",
-  "links": [{"label": "Paper", "url": "https://example.com"}]
+  "venue": "Example Conference, 2026",
+  "core_venue": "Example Conference",
+  "short_title": "Paper Title",
+  "research_category": "Your Research Area",
+  "thumbnail": "/images/papers/overview.png",
+  "thumbnail_alt": "Overview of the proposed method",
+  "links": [{ "label": "Paper", "url": "https://example.org/paper" }]
 }
 ```
 
-`title_url` 可省略，`links` 可为空数组。仅需完整列表时，将所有论文的 `featured` 设为 false；页面会默认打开完整列表。禁用 JavaScript 时两种展示均可阅读。
+`thumbnail` 和 `links` 可省略，v2 记录中的 `image` 和 `image_alt` 也可读取。项目卡片读取 `_data/projects.json` 中的标题、说明、图片及链接。
 
-## Blog 占位框
+## 首页 Blog 栏目
 
-首页保留 Blog 标题与导航，标题下只有三个无内容、无链接的占位框。它们不展示文章，也没有点击交互。
+编辑 `_includes/home/blog.html` 可替换技术博客和随笔的占位卡片。需要链接到自己的文章时，在卡片内加入文章的公开地址。
 
-编辑 `_includes/home/blog.html` 可调整占位框结构和数量；对应外观与响应式布局在 `assets/css/home-sections.css`。如需填入自己的内容和链接，直接修改该组件。通用文章布局仍可使用，但首页占位框不会自动读取文章。
+## 其他栏目与外观
 
-## 添加自己的 CV 链接
+在 `_data/news.json`、`talks.json`、`reports.json`、`awards.json` 和 `services.json` 中编辑各栏目记录。首页的顺序在 `_pages/about.md`，导航在 `_data/navigation.yml`。移除某个栏目时同步移除其导航链接。
 
-模板不提供 CV 页面、PDF 或简历内容。完成自己的 CV 并获得公开链接后，在 `_data/navigation.yml` 的 `main` 列表末尾添加：
+`assets/css/classic-home.css` 控制全宽布局、字体、配色和响应式样式。`images/background.jpg` 是首页的云景背景。首页 Blog 卡片的样式在 `assets/css/books.css`。
 
-```yaml
-  - title: "CV"
-    url: "https://example.com/your-cv"
-```
+## 可选音乐
 
-将示例 URL 替换为自己的 CV 链接，保留其他导航项即可。
-
-## 音乐（可选）
-
-默认 `_data/music.json` 为 `[]`，不显示播放器，也不会请求歌曲。添加你有权使用的音频和封面后填入：
+默认 `_data/music.json` 为空数组，播放器按歌单内容启用。将音频和封面放入项目后，填入歌曲资料，`duration` 的单位为秒。
 
 ```json
 [
@@ -90,18 +74,3 @@ JSON 中本地图片、文件、文章链接使用以 `/` 开头的站点路径�
   }
 ]
 ```
-
-`duration` 单位为秒。模板没有附带原主页的音频、歌单或封面。播放器支持播放、切歌、音量和进度，窄屏可展开。
-
-## 样式与代码
-
-- `home-sections.css`：首页栏目与卡片。
-- `classic-home.css`：蓝灰主题、背景、布局与移动端调整。
-- `_includes/home/dated-list.html`：Awards、Talks、Services 共用的日期列表；统一样式在 `classic-home.css`。
-- `assets/fonts/permanent-marker/`：欢迎标题的本地手写字体及授权，无需请求外部字体服务。
-- `_includes/home/blog.html`：三个空 Blog 占位框；样式在 `assets/css/home-sections.css`。
-- `music-player.css` / `music-player.js`：可选播放器。
-- `academic.css`：文章页面；`_includes/date.html`：首页日期格式。
-- `_sass/vendor/`、`assets/js/plugins/`：主题依赖，保留上游授权信息。
-
-`images/background.jpg` 是云与草地背景。可替换此文件，或修改 `classic-home.css` 中 `body::before` 的背景与 `--home-background-opacity`。样式链接带构建时间版本参数，发布后浏览器会获取更新的样式。

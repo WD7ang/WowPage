@@ -1,12 +1,19 @@
 {% include base_path %}
+{% assign show_all_nav = false %}
+{% if page.homepage_palette == 'classic-blue' %}{% assign show_all_nav = true %}{% endif %}
 
-<div class="masthead">
+<div class="masthead{% if show_all_nav %} masthead--all-links{% endif %}">
   <div class="masthead__inner-wrap">
     <div class="masthead__menu">
-      <nav id="site-nav" class="greedy-nav">
-        <button><div class="navicon"></div></button>
-        <ul class="visible-links">
-          <li class="masthead__menu-item masthead__menu-item--lg"><a href="{{ base_path }}/">{{ site.title }}</a></li>
+      <nav id="{% if show_all_nav %}site-nav-all{% else %}site-nav{% endif %}" class="greedy-nav" aria-label="Main navigation">
+        {% if show_all_nav %}
+        <a class="home-nav-brand" href="{{ base_path }}/">{{ site.title }}</a>
+        <button class="home-nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="home-nav-links" hidden>
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+        {% else %}<button><div class="navicon"></div></button>{% endif %}
+        <ul class="visible-links"{% if show_all_nav %} id="home-nav-links"{% endif %}>
+          {% unless show_all_nav %}<li class="masthead__menu-item masthead__menu-item--lg"><a href="{{ base_path }}/">{{ site.title }}</a></li>{% endunless %}
           {% for link in site.data.navigation.main %}
             {% if link.url contains 'http' %}
               {% assign domain = '' %}
@@ -16,7 +23,7 @@
             <li class="masthead__menu-item"><a href="{{ domain }}{{ link.url }}">{{ link.title }}</a></li>
           {% endfor %}
         </ul>
-        <ul class="hidden-links hidden"></ul>
+        {% unless show_all_nav %}<ul class="hidden-links hidden"></ul>{% endunless %}
       </nav>
     </div>
   </div>

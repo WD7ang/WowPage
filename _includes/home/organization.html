@@ -1,0 +1,3 @@
+{% assign item = include.item %}
+{% capture label %}{% if item.logo %}<img class="timeline-logo" src="{{ item.logo | relative_url | escape }}" alt="" width="24" height="24" loading="lazy">{% endif %}<span>{{ item.organization | escape }}</span>{% endcapture %}
+{% if item.url and item.url != '' %}<a class="timeline-org-badge" href="{{ item.url | relative_url | escape }}">{{ label }}</a>{% else %}<span class="timeline-org-badge">{{ label }}</span>{% endif %}

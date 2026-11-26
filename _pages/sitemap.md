@@ -7,7 +7,9 @@ author_profile: false
 
 <ul>
   <li><a href="{{ '/' | relative_url }}">Homepage</a></li>
-  <li><a href="{{ '/#blog' | relative_url }}">Blog</a></li>
-  {% for post in site.posts %}<li><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></li>{% endfor %}
+  {% for item in site.data.navigation.main %}
+    {% assign prefix = item.url | slice: 0, 2 %}
+    {% if prefix == '/#' %}<li><a href="{{ item.url | relative_url }}">{{ item.title | escape }}</a></li>{% endif %}
+  {% endfor %}
 </ul>
-<p><a href="{{ '/sitemap.xml' | relative_url }}">XML sitemap</a> · <a href="{{ '/feed.xml' | relative_url }}">RSS / Atom feed</a></p>
+<p><a href="{{ '/sitemap.xml' | relative_url }}">XML sitemap</a></p>

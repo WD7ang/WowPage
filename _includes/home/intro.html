@@ -1,15 +1,48 @@
-<h1 class="main-heading">
-  <span class="greeting-lead"><span>Hi there</span><img class="intro-wave" src="{{ '/images/Hi.gif' | relative_url }}" width="32" height="32" alt=""></span>
-  <span class="greeting-message">Welcome to my Homepage!</span>
-</h1>
-{{ site.data.profile.intro_html }}
-{% if site.data.profile.interests.size > 0 %}
-<div class="research-interests" role="group" aria-labelledby="research-interests-label">
-  <span class="research-caption" id="research-interests-label">Research interests</span>
-  <div class="research-tags">
-    {% for interest in site.data.profile.interests %}
-    <span class="research-topic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 7 10 1M7 7l4 11m6-10-6 10"/><circle cx="7" cy="7" r="3"/><circle cx="17" cy="8" r="3"/><circle cx="11" cy="18" r="3"/></svg>{{ interest | escape }}</span>
-    {% endfor %}
+{% assign author = site.author %}
+{% assign profile = site.data.profile %}
+<section class="home-profile" id="about" aria-labelledby="profile-name">
+  <div class="profile-overview">
+    <h1 id="profile-name">{{ author.name | escape }} {% if author.name_zh and author.name_zh != '' %}<span lang="zh-CN">({{ author.name_zh | escape }})</span>{% endif %}</h1>
+    <div class="profile-roles">
+      {% for role in profile.roles %}
+      <div>
+        <span>{{ role.title | escape }}</span>
+        {% if role.url and role.url != '' %}<a href="{{ role.url | relative_url | escape }}">{{ role.organization | escape }}</a>{% else %}<strong>{{ role.organization | escape }}</strong>{% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    <div class="profile-intro">{{ profile.intro_html }}</div>
+    <nav class="profile-links" aria-label="Contact and social profiles">
+      {% if author.email and author.email != '' %}<a href="mailto:{{ author.email | escape }}"><i class="profile-icon fas fa-envelope" aria-hidden="true"></i>Email</a>{% endif %}
+      {% if author.googlescholar and author.googlescholar != '' %}<a href="{{ author.googlescholar | escape }}"><i class="profile-icon fab fa-google-scholar" aria-hidden="true"></i>Google Scholar</a>{% endif %}
+      {% if author.github and author.github != '' %}<a href="https://github.com/{{ author.github | escape }}"><i class="profile-icon fab fa-github" aria-hidden="true"></i>GitHub</a>{% endif %}
+      {% if author.twitter and author.twitter != '' %}<a href="https://x.com/{{ author.twitter | escape }}"><i class="profile-icon fab fa-x-twitter" aria-hidden="true"></i>X</a>{% endif %}
+      {% if author.XiaoHongShu and author.XiaoHongShu != '' %}<a href="{{ author.XiaoHongShu | escape }}"><img class="profile-icon profile-icon--rednote" src="{{ '/images/rednote.svg' | relative_url }}" alt="">RedNote</a>{% endif %}
+      {% if author.WeChat and author.WeChat != '' %}<a href="{{ author.WeChat | prepend: '/images/' | relative_url | escape }}"><i class="profile-icon fab fa-weixin" aria-hidden="true"></i>WeChat</a>{% endif %}
+    </nav>
+    {% if author.avatar and author.avatar != '' %}
+    <figure class="profile-photo">
+      <span class="profile-portrait-frame"><img class="profile-portrait" src="{{ author.avatar | prepend: '/images/' | relative_url | escape }}" alt="{{ author.name | escape }}" width="260" height="260" fetchpriority="high"></span>
+      {% if profile.motto and profile.motto != '' %}<figcaption class="profile-motto">{{ profile.motto | escape }}</figcaption>{% endif %}
+    </figure>
+    {% endif %}
   </div>
-</div>
-{% endif %}
+  {% if profile.bios.size > 0 %}
+  <details class="profile-details" data-tab-group>
+    <summary>Detailed profile <span lang="zh-CN">（详细个人介绍）</span></summary>
+    <div class="profile-bio">
+      <div class="profile-language-tabs" role="tablist" aria-label="Profile language" hidden>
+        {% for bio in profile.bios %}
+        <button class="profile-language-tab" id="profile-tab-{{ forloop.index }}" type="button" role="tab" aria-controls="profile-bio-{{ forloop.index }}" lang="{{ bio.lang | escape }}">{{ bio.label | escape }}</button>
+        {% endfor %}
+      </div>
+      {% for bio in profile.bios %}
+      <section class="profile-language-panel" id="profile-bio-{{ forloop.index }}" role="tabpanel" aria-labelledby="profile-tab-{{ forloop.index }}" tabindex="0" lang="{{ bio.lang | escape }}">
+        <h4 class="profile-language-heading">{{ bio.label | escape }}</h4>
+        {{ bio.html }}
+      </section>
+      {% endfor %}
+    </div>
+  </details>
+  {% endif %}
+</section>

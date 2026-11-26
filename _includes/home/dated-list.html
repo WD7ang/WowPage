@@ -1,11 +1,17 @@
-<ul class="award-list">
+{% assign kind = include.kind | default: 'award' %}
+{% if include.items.size > 0 %}
+<ul class="{{ kind }}-list" role="list">
   {% for item in include.items %}
-  <li class="award-row">
-    <span class="award-date">{{ item.date | escape }}</span>
-    <div class="award-details">
-      <span class="award-title">{% if item.url and item.url != '' %}<a href="{{ item.url | relative_url }}">{{ item.title | escape }}</a>{% else %}{{ item.title | escape }}{% endif %}</span>
-      {% if item.details and item.details != '' %}<span class="award-meta">{{ item.details | escape }}</span>{% endif %}
+  <li class="{{ kind }}-row{% if item.featured %} {{ kind }}-featured{% endif %}">
+    {% if item.logo %}<img class="{{ kind }}-logo" src="{{ item.logo | relative_url | escape }}" alt="" width="72" height="58" loading="lazy">{% endif %}
+    <div class="{{ kind }}-details">
+      <span class="{{ kind }}-title">{% if item.url and item.url != '' %}<a href="{{ item.url | relative_url | escape }}">{{ item.title | escape }}</a>{% else %}{{ item.title | escape }}{% endif %}</span>
+      {% if item.details %}<span class="{{ kind }}-meta">{{ item.details | escape }}</span>{% endif %}
     </div>
+    <span class="{{ kind }}-date">{{ item.date | escape }}</span>
   </li>
   {% endfor %}
 </ul>
+{% else %}
+<p class="section-empty">To be updated.</p>
+{% endif %}

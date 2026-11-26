@@ -1,17 +1,34 @@
 {% assign publication = include.publication %}
-<div class="publication-card">
-  <div class="card-content">
-    {% if publication.image and publication.image != '' %}
+{% assign paper_id = publication.id | default: publication.title | slugify %}
+{% assign thumbnail = publication.thumbnail | default: publication.image %}
+{% assign resource_links = publication.homepage_links | default: publication.links %}
+<article class="publication-card publication-row{% unless thumbnail %} publication-row--text{% endunless %}" id="paper-{{ paper_id }}" aria-labelledby="paper-title-{{ paper_id }}">
+  <div>
+    {% if thumbnail %}
     <div class="pub-media-rotator">
-      <img src="{{ publication.image | relative_url }}" alt="{{ publication.image_alt | default: publication.title | escape }}" loading="lazy" width="640" height="360">
+      <img src="{{ thumbnail | relative_url | escape }}" alt="{{ publication.thumbnail_alt | default: publication.image_alt | default: publication.title | escape }}" width="{{ publication.thumbnail_width | default: 640 }}" height="{{ publication.thumbnail_height | default: 360 }}" loading="lazy" decoding="async">
     </div>
     {% endif %}
-    <div class="card-description">
-      <strong>{% if publication.title_url and publication.title_url != '' %}<a href="{{ publication.title_url | relative_url }}">{{ publication.title | escape }}</a>{% else %}{{ publication.title | escape }}{% endif %}</strong>
-      <p class="publication-authors">{{ publication.authors_html }}</p>
-      <p>{{ publication.description | escape }}</p>
-      <span class="publication-venue">{{ publication.venue | escape }}</span>
-      {% for link in publication.links %}<a href="{{ link.url | relative_url }}">[{{ link.label | escape }}]</a> {% endfor %}
+    <div class="pub-card-body">
+      <h4 class="pub-card-title" id="paper-title-{{ paper_id }}">
+        {%- if publication.title_url and publication.title_url != '' -%}<a href="{{ publication.title_url | relative_url | escape }}">{%- endif -%}
+        {% include publication-title-marker.html publication=publication %}{{ publication.title | escape }}
+        {%- if publication.title_url and publication.title_url != '' -%}</a>{%- endif -%}
+      </h4>
+      <p class="pub-authors" data-authors-full="{{ publication.homepage_authors_html | default: publication.authors_html | escape }}">{{ publication.authors_html }}</p>
+      {% if publication.description %}<p class="pub-description">{{ publication.description | escape }}</p>{% endif %}
+      <div class="pub-card-meta">
+        {% if publication.keyword %}<span class="pub-keyword">{{ publication.keyword | escape }}</span>{% endif %}
+        <span class="pub-venue">{{ publication.venue | escape }}{% if publication.homepage_note %} <span class="pub-venue-note">({{ publication.homepage_note | escape }})</span>{% endif %}</span>
+        <span class="pub-resource-links">
+          {%- for link in resource_links -%}
+          <a href="{{ link.url | relative_url | escape }}">{% if link.label == 'Tech Report' %}<span class="pub-tech-report">{{ link.label | escape }}</span>{% else %}{{ link.label | escape }}{% endif %}</a>
+          {%- endfor -%}
+          {%- for link in publication.media_links -%}
+          <a href="{{ link.url | relative_url | escape }}"><span class="pub-media-link-label">{% if link.logo %}<img class="pub-media-link-logo" src="{{ link.logo | relative_url | escape }}" width="16" height="16" alt="" loading="lazy" decoding="async">{% endif %}{{ link.label | escape }}</span></a>
+          {%- endfor -%}
+        </span>
+      </div>
     </div>
   </div>
-</div>
+</article>

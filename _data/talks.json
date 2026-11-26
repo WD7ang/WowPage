@@ -1,8 +1,9 @@
 [
   {
-    "title": "An Introduction to Your Research",
-    "date": "2025.10",
-    "details": "Example seminar · Your Institution",
-    "url": "https://example.com"
+    "title": "Your Talk Title",
+    "date": "20XX.10",
+    "details": "Your Seminar or Event · Your Host Institution",
+    "url": "https://example.org/",
+    "logo": "/images/placeholders/institution.svg"
   }
 ]

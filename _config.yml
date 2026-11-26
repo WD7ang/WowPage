@@ -10,6 +10,7 @@ baseurl: # "" for username.github.io; /repository-name for a project site
 repository: # your-username/your-repository
 author:
   name: *name
+  name_zh: "你的名字"
   avatar: placeholders/avatar.svg # relative to images/
   bio: "Researcher · Your research area"
   location: "City, Country"
@@ -21,9 +22,10 @@ author:
   github: "your-github-username" # replace with your username
   orcid:
   linkedin: # username
+  XiaoHongShu: # full RedNote profile URL
   WeChat: # image filename relative to images/
 
-# Rendering and defaults. Content lives in _data/ and _posts/.
+# Rendering and defaults. Homepage content lives in _data/.
 timezone: Etc/UTC
 future: false
 markdown: kramdown

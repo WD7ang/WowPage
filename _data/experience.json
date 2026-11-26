@@ -1,22 +1,29 @@
 [
   {
-    "id": "research-lab",
-    "organization": "Your Research Lab",
-    "url": "https://example.com",
+    "education_id": "undergraduate",
+    "organization": "Your Host Organization",
     "logo": "/images/placeholders/institution.svg",
-    "role": "Research Assistant",
-    "date_start": "09/2025",
-    "date_end": "Present",
-    "description": "Describe your research question and your contribution in one concise sentence."
+    "role": "Your Internship Title",
+    "date_start": "06/2022",
+    "date_end": "08/2022",
+    "description": "Describe your contribution during this internship."
   },
   {
-    "id": "example-company",
-    "organization": "Example Company",
-    "url": "https://example.com",
+    "education_id": "undergraduate",
+    "organization": "Your Undergraduate Research Lab",
     "logo": "/images/placeholders/institution.svg",
-    "role": "Research Intern",
-    "date_start": "06/2025",
-    "date_end": "08/2025",
-    "description": "Describe the project, your role, and the practical outcome."
+    "role": "Your Research Role",
+    "date_start": "09/2023",
+    "date_end": "06/2024",
+    "description": "Add a research project or responsibility from this period."
+  },
+  {
+    "education_id": "graduate",
+    "organization": "Your Graduate Research Lab",
+    "logo": "/images/placeholders/institution.svg",
+    "role": "Your Current Role",
+    "date_start": "09/2024",
+    "date_end": "Present",
+    "description": "Describe your current research responsibilities."
   }
 ]

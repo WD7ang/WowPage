@@ -1,0 +1,76 @@
+name: Publish version showcases
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: wowpage-showcase
+  cancel-in-progress: false
+
+jobs:
+  build:
+    # This repository hosts the version gallery. A template user's own Pages
+    # deployment only needs the Jekyll site on their selected branch.
+    if: github.repository == 'WD7ang/WowPage' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/configure-pages@v5
+        id: pages
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+      - name: Build current and archived templates
+        env:
+          JEKYLL_ENV: production
+          PAGES_REPO_NWO: ${{ github.repository }}
+          JEKYLL_GITHUB_TOKEN: ${{ github.token }}
+          SITE_ORIGIN: ${{ steps.pages.outputs.origin }}
+          SITE_PATH: ${{ steps.pages.outputs.base_path }}
+        run: |
+          destination="$RUNNER_TEMP/showcase"
+          config="$RUNNER_TEMP/pages-config.yml"
+          printf 'url: "%s"\nrepository: "%s"\n' "$SITE_ORIGIN" "$PAGES_REPO_NWO" > "$config"
+          bundle exec jekyll build --config "_config.yml,$config" --baseurl "$SITE_PATH" --destination "$destination"
+          node scripts/check-site.mjs --site "$destination" --baseurl "$SITE_PATH"
+
+          for tag in v1.0.0 v2.0.9; do
+            version="${tag%%.*}"
+            source="$RUNNER_TEMP/$tag"
+            mkdir "$source"
+            git archive "refs/tags/$tag" | tar -x -C "$source"
+            (
+              cd "$source"
+              bundle config set --local path "$GITHUB_WORKSPACE/vendor/bundle"
+              bundle install
+              bundle exec jekyll build --config "_config.yml,$config" --baseurl "$SITE_PATH/$version" --destination "$destination/$version"
+            )
+            node scripts/check-site.mjs --site "$destination/$version" --baseurl "$SITE_PATH/$version"
+          done
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ runner.temp }}/showcase
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v5
+        id: deployment

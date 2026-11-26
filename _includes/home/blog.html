@@ -1,8 +1,15 @@
 <section class="home-blog" id="blog" aria-labelledby="blog-heading">
   <h2 id="blog-heading">Blog</h2>
-  <div class="blog-placeholders" aria-hidden="true">
-    <div class="blog-placeholder"></div>
-    <div class="blog-placeholder"></div>
-    <div class="blog-placeholder"></div>
+  <div class="home-blog-cards">
+    {% assign categories = 'Tech Blog|Essays' | split: '|' %}
+    {% for category in categories %}
+    <section class="home-blog-card">
+      <span class="home-blog-cover" aria-hidden="true"></span>
+      <div>
+        <h3>{{ category }}</h3>
+        <p>No posts yet.</p>
+      </div>
+    </section>
+    {% endfor %}
   </div>
 </section>

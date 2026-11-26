@@ -1,16 +1,34 @@
-<h2 id="experience">Experience</h2>
-<div class="experience-container">
-  {% for item in site.data.experience %}
-  <div class="experience-card">
-    <img src="{{ item.logo | relative_url }}" alt="" class="experience-logo" width="60" height="60">
-    <div class="experience-info">
-      <div class="experience-header">
-        <strong>{% if item.url and item.url != '' %}<a href="{{ item.url | relative_url }}">{{ item.organization | escape }}</a>{% else %}{{ item.organization | escape }}{% endif %}</strong>
-        <span class="experience-date">{% include date.html value=item.date_start %} – {% include date.html value=item.date_end %}</span>
-      </div>
-      <div class="experience-role">{{ item.role | escape }}</div>
-      <div class="experience-description">{{ item.description | escape }}</div>
+{% assign degrees = site.data.education %}
+<section class="home-experience" data-tab-group aria-labelledby="experience">
+  <div class="experience-heading" id="education">
+    <h2 id="experience">Experience</h2>
+    {% if degrees.size > 0 %}
+    <div class="experience-tabs" role="tablist" aria-label="Academic stage" hidden>
+      {% for degree in degrees %}
+      <button type="button" id="stage-tab-{{ forloop.index }}" class="experience-tab" role="tab" aria-controls="stage-{{ forloop.index }}">
+        {% if degree.logo %}<img class="experience-tab-logo" src="{{ degree.logo | relative_url }}" alt="" width="20" height="20">{% endif %}
+        <span class="experience-tab-date">{{ degree.years | escape }}</span>
+        <span class="experience-tab-label">{{ degree.tab_label | default: degree.degree | escape }}</span>
+      </button>
+      {% endfor %}
     </div>
+    {% endif %}
   </div>
+  {% for degree in degrees %}
+  <section class="timeline-period" id="stage-{{ forloop.index }}" role="tabpanel" aria-labelledby="stage-tab-{{ forloop.index }}" tabindex="0">
+    <header class="timeline-school">
+      <h3 class="timeline-org">{% include home/organization.html item=degree %}</h3>
+      <p class="timeline-description timeline-description--emphasis">{{ degree.degree | escape }}</p>
+      {% if degree.details_html %}<p class="timeline-description">{{ degree.details_html }}</p>{% endif %}
+      <p class="timeline-date">{{ degree.date_start | escape }} – {{ degree.date_end | escape }}</p>
+    </header>
+    <div class="timeline-axis" aria-hidden="true"></div>
+    {% assign placements = site.data.experience | where: "education_id", degree.id %}
+    {% if degree.id and placements.size > 0 %}{% include home/placements.html items=placements %}{% endif %}
+  </section>
   {% endfor %}
-</div>
+  {% assign independent = site.data.experience | where_exp: "placement", "placement.education_id == nil" %}
+  {% if independent.size > 0 %}
+  <div class="timeline-period">{% include home/placements.html items=independent %}</div>
+  {% endif %}
+</section>

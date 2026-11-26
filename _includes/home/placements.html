@@ -1,0 +1,10 @@
+<ol class="timeline-placements" role="list">
+  {% for placement in include.items %}
+  <li class="timeline-stage{% if placement.date_end == 'Present' %} timeline-stage--current{% endif %}">
+    <p class="timeline-date">{{ placement.date_start | escape }} – {{ placement.date_end | escape }}</p>
+    <h4 class="timeline-org">{% include home/organization.html item=placement %}</h4>
+    <p class="timeline-role">{{ placement.role | escape }}</p>
+    {% if placement.description %}<p class="timeline-description">{{ placement.description | escape }}</p>{% endif %}
+  </li>
+  {% endfor %}
+</ol>

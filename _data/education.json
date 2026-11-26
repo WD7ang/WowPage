@@ -1,20 +1,26 @@
 [
   {
-    "organization": "Your University",
-    "url": "https://example.com",
+    "id": "undergraduate",
+    "tab_label": "Bachelor’s",
+    "years": "2020–2024",
+    "organization": "Your Undergraduate University",
+    "url": "https://example.org/",
     "logo": "/images/placeholders/institution.svg",
-    "degree": "Ph.D. Student in Your Field",
-    "date_start": "09/2024",
-    "date_end": "Present",
-    "details_html": "Research area: your topic. Advisor: Professor Example."
-  },
-  {
-    "organization": "Example University",
-    "url": "https://example.com",
-    "logo": "/images/placeholders/institution.svg",
-    "degree": "B.Sc. in Your Field",
+    "degree": "Bachelor’s Degree in Your Field",
     "date_start": "09/2020",
     "date_end": "06/2024",
-    "details_html": "Add your department, coursework, or thesis topic."
+    "details_html": "Add your thesis title or a focus of your undergraduate studies."
+  },
+  {
+    "id": "graduate",
+    "tab_label": "Graduate",
+    "years": "2024–now",
+    "organization": "Your Graduate University",
+    "url": "https://example.org/",
+    "logo": "/images/placeholders/institution.svg",
+    "degree": "Graduate Degree in Your Field",
+    "date_start": "09/2024",
+    "date_end": "Present",
+    "details_html": "Add your research focus, supervisor, or thesis topic."
   }
 ]
