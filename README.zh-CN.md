@@ -52,9 +52,3 @@ node scripts/check-site.mjs --baseurl /WowPage
 ## 版权与致谢
 
 WowPage 起源于 [Yue Su / Selen-Suyue 的主页](https://selen-suyue.github.io/)，由汤维栋与 Yue Su 开发，基于 [AcademicPages](https://github.com/academicpages/academicpages.github.io) 和 [Minimal Mistakes](https://github.com/mmistakes/minimal-mistakes)。模板采用 [MIT 许可证](LICENSE)。随模板提供的 Outfit 字体使用 [SIL 开放字体许可证](assets/fonts/Outfit-OFL.txt)。
-
-## 社区案例
-
-| 例图（Mac） | 例图（iPhone） | 链接 |
-| --- | --- | --- |
-| <img src="docs/showcase/zhiming-liu.png" alt="Zhiming Liu 的个人主页 Mac 预览" width="400"> | <img src="docs/showcase/zhiming-liu-iphone.png" alt="Zhiming Liu 的个人主页 iPhone 预览" width="160"> | **Zhiming Liu**<br>[https://mikuz12.github.io/](https://mikuz12.github.io/) |
